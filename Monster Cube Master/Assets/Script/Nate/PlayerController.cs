@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     #region Inventory Controller Variable Define
 
     public InventoryController inventory;
+    public HUD Hud;
 
     #endregion
 
@@ -72,15 +73,31 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
 
-        ///Version 2.0 - Food, water, Key only for the valueable item for player
-        if (item != null )
-        { 
-            inventory.AddItem(item);
-        }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IInventoryItem item = other.GetComponent<IInventoryItem>();
+        if (item != null)
+        {
+            Debug.Log("Detect the collision");
+        }
+        ///Version 2.0 - Food, water, Key only for the valueable item for player
+        if (item != null)
+        {
+            // inventory.AddItem(item);
+            //  item.OnPickUp();
+            Hud.OpenMessagePanel("");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Hud.CloseMessagePanel("");
+    }
+
 
 
 }
