@@ -35,8 +35,6 @@ public class InventoryController : MonoBehaviour
                 if(ItemAdded != null)
                 {
                     ItemAdded(this, new InventoryEventArgs(item));
-
-
                 }
 
             }
