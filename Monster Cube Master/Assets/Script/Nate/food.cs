@@ -24,6 +24,6 @@ public class food : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        gameObject.SetActive(false);    
+        Destroy(gameObject);
     }
 }

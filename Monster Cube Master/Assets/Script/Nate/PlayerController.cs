@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
             {
                 movedirection *= sprintspeed;
-
+                energy -= 2f;
 
             }else {
                 movedirection *= speed;

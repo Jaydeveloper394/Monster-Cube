@@ -25,6 +25,6 @@ public class key : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
