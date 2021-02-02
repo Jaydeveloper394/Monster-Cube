@@ -14,7 +14,7 @@ public class PlayerCameraScriptes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sensitivityOfMouse = 0.3f;
+        sensitivityOfMouse = 0.8f;
     }
 
     // Update is called once per frame
