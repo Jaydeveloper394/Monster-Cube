@@ -37,14 +37,7 @@ public class HUD : MonoBehaviour
              *      Then, try to give the Item image to it. Faild. Same reason with Try 1.
              *  Try 3:
              *      Detected the event item information in e, but can't give the e.image value (Sprite) type to Image    
-             *      
-             *      Fixed: 
-             *          Need to change the justice condition to let the value into the loop
-             *      Newproblem 02/01/2021 :  
-             *          Item will cover the slot[0], need to consider to justice at first the event beginning 
-             *          Or, when we search in current loop.
-             *              Current loop need to setup the function and find primary key to justice. 
-            */ 
+            */
             Transform imagetransform = slot.GetChild(0).GetChild(0).transform;
             if (NateDebug)
                 Debug.Log(imagetransform.name);
