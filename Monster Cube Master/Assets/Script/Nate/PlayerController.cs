@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
             {
                 movedirection *= sprintspeed;
-
+                energy -= 2f;
 
             }else {
                 movedirection *= speed;
@@ -73,10 +73,11 @@ public class PlayerController : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
-
+       
         ///Version 2.0 - Food, water, Key only for the valueable item for player
         if (item != null )
-        { 
+        {
+            Debug.Log("Detect collision with Item");
             inventory.AddItem(item);
         }
 
