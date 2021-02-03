@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - KeySpawn
+  - FoodSpawn
+  - WaterSpawn
   layers:
   - Default
   - TransparentFX
