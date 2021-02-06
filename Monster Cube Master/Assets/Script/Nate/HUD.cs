@@ -51,15 +51,18 @@ public class HUD : MonoBehaviour
 
             //ItemDragHandler
             //We found the empty slot
-            if (image.enabled )
+            if (image.enabled && image.sprite == null)
             {
-                if(NateDebug) 
+                if (NateDebug)
                     Debug.Log("**************** Enter image Enabled **********");
                 image.enabled = true;
                 image.sprite = e.Item.Image;
-                
-               
-                break; 
+
+
+                break;
+            }
+            else {
+                continue;
             }
         }
     }
