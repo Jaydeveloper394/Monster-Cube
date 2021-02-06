@@ -70,9 +70,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
