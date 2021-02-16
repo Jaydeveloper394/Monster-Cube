@@ -4350,6 +4350,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Image: {fileID: 21300000, guid: 61aedb04d818f264098a3a54d64ab4af, type: 3}
+--- !u!1 &2012031215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7061032502231675048, guid: 23104d3e3e6ccf540b64da116d042c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 7061032501043304151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012031220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012031215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f53f9b9e2d84ed40803f0cc2c23849e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1086369756}
+  thirstSlider: {fileID: 1890633293}
+  hungerSlider: {fileID: 528994288}
+  healthDropRate: 0
+  thirstDropRate: 2
+  hungerDropRate: 1.5
 --- !u!1 &2014500457
 GameObject:
   m_ObjectHideFlags: 0
