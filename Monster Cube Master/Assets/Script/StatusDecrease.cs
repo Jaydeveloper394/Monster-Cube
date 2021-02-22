@@ -91,37 +91,5 @@ public class StatusDecrease : MonoBehaviour
            Debug.Log("Player health dropped to 0");
         }
         
-        
-        //only for debugging purposes
-        if(Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Alpha4))
-        {
-           healthSlider.value += 0.2f;
-           if(healthSlider.value > healthSlider.maxValue)
-           {
-              healthSlider.value = healthSlider.maxValue;
-           }
-        }
-        
-        //only for debugging purposes
-        if(Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Alpha5))
-        {
-           thirstSlider.value += 0.3f;
-           if(thirstSlider.value > thirstSlider.maxValue)
-           {
-              thirstSlider.value = thirstSlider.maxValue;
-           }
-        }
-        
-        //only for debugging purposes
-        if(Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Alpha6))
-        {
-           hungerSlider.value += 0.2f;
-           if(hungerSlider.value > hungerSlider.maxValue)
-           {
-              hungerSlider.value = hungerSlider.maxValue;
-           }
-        }
-        
-        
     }
 }

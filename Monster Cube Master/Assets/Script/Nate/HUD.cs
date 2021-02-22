@@ -17,8 +17,10 @@ public class HUD : MonoBehaviour
     void Start()
     {
         Inventory.ItemAdded += InventoryScript_ItemAdded;
-
+        Inventory.ItemRemoved += InventoryScript_ItemRemoved;
+        
     }
+    
     private void InventoryScript_ItemAdded(object sender, InventoryEventArgs e)
     {
         Transform inventoryPanel = transform.Find("Inventory");
@@ -66,6 +68,49 @@ public class HUD : MonoBehaviour
             }
         }
     }
+    
+    private void InventoryScript_ItemRemoved(object sender, InventoryEventArgs e)
+    {
+       Transform inventoryPanel = transform.Find("Inventory");
+       int itemNum = 0;
+       foreach (Transform slot in inventoryPanel)
+       {
+          if(itemNum == e.itemIndex)
+          {
+             Transform imagetransform = slot.GetChild(0).GetChild(0).transform;
+             Image image = imagetransform.GetComponent<Image>();
+             
+             if(image.enabled && image.sprite != null)
+             {
+                image.sprite = null;
+             }
+             break;
+          }
+          else
+          {
+             ++itemNum;
+             continue;
+          }
+       }
+       
+       for(int i = e.itemIndex; i < inventoryPanel.childCount - 1; i++)
+       {
+            Transform imagetransform = inventoryPanel.GetChild(i).GetChild(0).GetChild(0).transform;
+            Image image = imagetransform.GetComponent<Image>();
+            
+            Transform imagetransform2 = inventoryPanel.GetChild(i + 1).GetChild(0).GetChild(0).transform;
+            Image image2 = imagetransform2.GetComponent<Image>();
+            
+            if(image.enabled && image.sprite == null)
+            {
+               //move remaining items left in the HUD
+               image.sprite = image2.sprite;
+               image2.sprite = null;
+            }
+       }
+       
+    }
+    
     public void OpenMessagePanel(string Text)
     {
         MessagePanel.SetActive(true);

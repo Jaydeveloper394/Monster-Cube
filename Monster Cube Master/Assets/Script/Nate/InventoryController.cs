@@ -6,12 +6,17 @@ using System;
 
 public class InventoryController : MonoBehaviour
 {
+    public Slider healthSlider;
+    public Slider thirstSlider;
+    public Slider hungerSlider;
+   
     #region  IInventory define
     private const int SLOTS = 6;
 
     private List<IInventoryItem> mItems = new List<IInventoryItem>();
 
     public event EventHandler<InventoryEventArgs> ItemAdded;
+    public event EventHandler<InventoryEventArgs> ItemRemoved;
 
     #endregion
 
@@ -47,37 +52,69 @@ public class InventoryController : MonoBehaviour
     
     public void UseItem(int itemSlot)
     {
-       //IInventoryItem tempItem = mItems[itemSlot - 1];
-       
-/*        //food to recover hunger status
-       if(tempItem.gameObject.tag == "Food")
+       if(itemSlot <= mItems.Count)
        {
+       
+          string itemName = mItems[itemSlot - 1].Name;
           
+          if(itemName == "food")
+          {
+             Debug.Log("Using item: " + itemName);
+             //recover hunger status
+             hungerSlider.value += 20;
+             if(hungerSlider.value > hungerSlider.maxValue)
+             {
+                hungerSlider.value = hungerSlider.maxValue;
+             }
+          }
+          
+          if(itemName == "water")
+          {
+             Debug.Log("Using item: " + itemName);
+             //recover thirst status
+             thirstSlider.value += 20;
+             if(thirstSlider.value > thirstSlider.maxValue)
+             {
+                thirstSlider.value = thirstSlider.maxValue;
+             }
+          }
+          
+          if(itemName != "key")
+          {
+             //delete item from list if not key
+             mItems.RemoveAt(itemSlot - 1);
+             
+             if(ItemRemoved != null)
+             {
+                 ItemRemoved(this, new InventoryEventArgs(itemSlot - 1));
+             }
+          }
+          else
+          {
+             Debug.Log("Key item cannot be consumed.");
+          }
+       
        }
        
-       //water to recover thirst status
-       if(tempItem.gameObject.tag == "Water")
-       {
-          
-       }
-       
-       //delete item from list (if not an important item like a key)
-       if(tempItem.gameObject.tag != "Key")
-       {
-          
-       } */
     }
     
     public void DropItem(int itemSlot)
     {
-       //IInventoryItem tempItem = mItems[itemSlot - 1];
-       
-       //Delete item from inventory and Re-instantiate item to player's current location
+       if(itemSlot <= mItems.Count)
+       {
+            string itemName = mItems[itemSlot - 1].Name;
+            Debug.Log("Dropping item: " + itemName);
+            
+            if(ItemRemoved != null)
+            {
+                ItemRemoved(this, new InventoryEventArgs(itemSlot - 1));
+            }
+       }
     }
     
     void Update()
     {
-       if(Input.GetKey(KeyCode.Alpha1))
+       if(Input.GetKeyDown(KeyCode.Alpha1))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
@@ -89,7 +126,7 @@ public class InventoryController : MonoBehaviour
           }
        }
        
-       if(Input.GetKey(KeyCode.Alpha2))
+       if(Input.GetKeyDown(KeyCode.Alpha2))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
@@ -101,7 +138,7 @@ public class InventoryController : MonoBehaviour
           }
        }
        
-       if(Input.GetKey(KeyCode.Alpha3))
+       if(Input.GetKeyDown(KeyCode.Alpha3))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
@@ -113,7 +150,7 @@ public class InventoryController : MonoBehaviour
           }
        }
        
-       if(Input.GetKey(KeyCode.Alpha4))
+       if(Input.GetKeyDown(KeyCode.Alpha4))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
@@ -125,7 +162,7 @@ public class InventoryController : MonoBehaviour
           }
        }
        
-       if(Input.GetKey(KeyCode.Alpha5))
+       if(Input.GetKeyDown(KeyCode.Alpha5))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
@@ -137,7 +174,7 @@ public class InventoryController : MonoBehaviour
           }
        }
        
-       if(Input.GetKey(KeyCode.Alpha6))
+       if(Input.GetKeyDown(KeyCode.Alpha6))
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
