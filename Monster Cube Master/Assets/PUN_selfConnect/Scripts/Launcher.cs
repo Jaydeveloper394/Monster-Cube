@@ -178,9 +178,12 @@ namespace Com.uci_167.shuaw11
         }
 
 
-
+        //Begin to start the game, and load the roomPrefeb Scence
         public void StartGame()
         {
+            //set Auto Sync
+            bool AutomaticallySyncScene = true;
+
             PhotonNetwork.LoadLevel(1);
 
         }
@@ -273,9 +276,7 @@ namespace Com.uci_167.shuaw11
             //setup the player's prefeb
             foreach (var cplayer in players)
             {
-         
                 Instantiate(playerListItemPrefeb, playerListContent).GetComponent<PlayerListItem>().SetUp(cplayer);
-
             }
 
             startGameButton.SetActive(PhotonNetwork.IsMasterClient);

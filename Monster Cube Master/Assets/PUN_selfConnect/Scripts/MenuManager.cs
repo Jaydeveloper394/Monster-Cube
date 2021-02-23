@@ -50,4 +50,16 @@ public class MenuManager : MonoBehaviour
         menu.Close();
     }
 
+    public void QuitApp()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+        //Just to make sure its working
+    }
+/*    private void SendQuitEvent()
+    {
+        // send event, add your code here
+        Photon.Pun.PhotonNetwork.SendAllOutgoingCommands(); // send it right now
+    }*/
 }
+

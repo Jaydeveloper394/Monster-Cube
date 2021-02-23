@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     #region Inventory Controller Variable Define
 
@@ -30,12 +32,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         move();
+        DetectExitGame();
     }
     void move()
     {
@@ -69,6 +73,31 @@ public class PlayerController : MonoBehaviour
         mycontroller.Move(movedirection * Time.deltaTime);
 
     }
+
+    private void DetectExitGame()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            //Update TODO: show the check box menu after press thee key
+            //{ }
+            ExitRoomInGameAndReload();
+        }
+    }
+
+
+    private void ExitRoomInGameAndReload()
+    {
+        //Leave the Room
+        PhotonNetwork.LeaveRoom();
+        //Application.Quit();
+        //Delete the Player prefeb in the game
+
+
+        //Load the Room List menu
+        PhotonNetwork.LoadLevel(0);
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
