@@ -22,7 +22,9 @@ public class MenuManager : MonoBehaviour
         {
             if (menus[i].menuName == menuName)
             {
-                OpenMenu(menus[i]);
+                //Reset so don't need to reload the anohter loop
+                //increase the efficiency 
+                menus[i].Open();
             }
             else if (menus[i].boolopen) {
                 CloseMenu(menus[i]);

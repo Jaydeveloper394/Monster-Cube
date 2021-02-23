@@ -235,6 +235,13 @@ namespace Com.uci_167.shuaw11
 
             for (int i = 0; i < roomList.Count; i++)
             {
+                //pun2 only set the RemovedFromLIst Boolean be true
+                // check then skip it;
+                if (roomList[i].RemovedFromList)
+                {
+                    continue;
+                }
+
                 Instantiate(roomListItemPrefeb, roomListContent).GetComponent<RoomListItem>().SetUp(roomList[i]);
             }
         }
@@ -256,9 +263,17 @@ namespace Com.uci_167.shuaw11
             // Then loop it and Instantiate every PlayerListItem Object
 
             Player[] players = PhotonNetwork.PlayerList;
+            
+            //Fixed the bug player will never exit the room which has been destroyed
+            foreach (Transform child in playerListContent)
+            {
+                Destroy(child.gameObject);
+            }
+
+            //setup the player's prefeb
             foreach (var cplayer in players)
             {
-                
+         
                 Instantiate(playerListItemPrefeb, playerListContent).GetComponent<PlayerListItem>().SetUp(cplayer);
 
             }
