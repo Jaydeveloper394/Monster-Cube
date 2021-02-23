@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StatusDecrease : MonoBehaviour
 {
@@ -88,7 +89,8 @@ public class StatusDecrease : MonoBehaviour
         
         if(healthSlider.value <= 0)
         {
-           Debug.Log("Player health dropped to 0");
+           Debug.Log("Player health dropped to 0 and is dead. Scene Reloaded.");
+           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
     }

@@ -47,6 +47,10 @@ public class InventoryController : MonoBehaviour
 
 
         }
+        else
+        {
+           Debug.Log("Inventory is full.");
+        }
 
     }
     
@@ -103,7 +107,9 @@ public class InventoryController : MonoBehaviour
        if(itemSlot <= mItems.Count)
        {
             string itemName = mItems[itemSlot - 1].Name;
-            Debug.Log("Dropping item: " + itemName);
+            Debug.Log("Discarding item: " + itemName);
+            
+            mItems.RemoveAt(itemSlot - 1);
             
             if(ItemRemoved != null)
             {
