@@ -7013,7 +7013,7 @@ PrefabInstance:
       objectReference: {fileID: 1890633293}
     - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
       propertyPath: healthDropRate
-      value: 2
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
       propertyPath: hungerDropRate
@@ -7022,6 +7022,18 @@ PrefabInstance:
     - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
       propertyPath: thirstDropRate
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
+      propertyPath: respawnPosition.x
+      value: -409.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
+      propertyPath: respawnPosition.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012031220, guid: 23104d3e3e6ccf540b64da116d042c31, type: 3}
+      propertyPath: respawnPosition.z
+      value: 471.8
       objectReference: {fileID: 0}
     - target: {fileID: 7061032502231674964, guid: 23104d3e3e6ccf540b64da116d042c31,
         type: 3}

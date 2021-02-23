@@ -106,7 +106,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void OnTriggerExit(Collider other)
     {
-        
+       //if inventory is full, make item obtainable again
+       if(other.tag == "Item")
+       {
+          other.isTrigger = false;
+       }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
        
         ///Version 2.0 - Food, water, Key only for the valueable item for player
-        if (item != null )
+        if (item != null)
         {
             Debug.Log("Detect collision with Item");
             inventory.AddItem(item);

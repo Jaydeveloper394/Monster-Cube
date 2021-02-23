@@ -26,11 +26,11 @@ public class InventoryController : MonoBehaviour
     /// <param name="item"></param>
     public void AddItem(IInventoryItem item)
     {
-        if (mItems.Count < SLOTS)
+        if(mItems.Count < SLOTS)
         {
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-
-            if (collider.enabled)
+            
+            if(collider.enabled)
             {
                 collider.enabled = false;
                 
@@ -42,13 +42,12 @@ public class InventoryController : MonoBehaviour
                 {
                     ItemAdded(this, new InventoryEventArgs(item));
                 }
-
             }
-
-
         }
         else
         {
+           Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
+           collider.isTrigger = true;
            Debug.Log("Inventory is full.");
         }
 

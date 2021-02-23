@@ -14,14 +14,17 @@ public class StatusDecrease : MonoBehaviour
     public float thirstDropRate;
     public float hungerDropRate;
     
+    public Vector3 respawnPosition;
+    
     private bool thirstIsDropping;
     private bool hungerIsDropping;
+    
+    private int deathCount;
     
     public void decreaseThirst()
     {
        thirstIsDropping = true;
        StartCoroutine(DecreaseSlider(thirstSlider, thirstDropRate));
-
     }
     
     public void decreaseHunger()
@@ -64,7 +67,7 @@ public class StatusDecrease : MonoBehaviour
         if(thirstSlider.value <= 0)
         {
            thirstIsDropping = false;
-           float dropValue = (healthSlider.maxValue * healthDropRate / 10000);
+           float dropValue = (healthSlider.maxValue * healthDropRate * Time.deltaTime / 36);
            healthSlider.value -= dropValue;
         }
         
@@ -72,7 +75,7 @@ public class StatusDecrease : MonoBehaviour
         if(hungerSlider.value <= 0)
         {
            hungerIsDropping = false;
-           float dropValue = (healthSlider.maxValue * healthDropRate / 10000);
+           float dropValue = (healthSlider.maxValue * healthDropRate * Time.deltaTime / 36);
            healthSlider.value -= dropValue;
         }
         
@@ -89,8 +92,11 @@ public class StatusDecrease : MonoBehaviour
         
         if(healthSlider.value <= 0)
         {
-           Debug.Log("Player health dropped to 0 and is dead. Scene Reloaded.");
-           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+           deathCount++;
+           Debug.Log("Player health dropped to 0. Death Count: " + deathCount);
+           transform.position = respawnPosition;
+           healthSlider.value = healthSlider.maxValue;
+           //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
     }
