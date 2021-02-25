@@ -14,7 +14,7 @@ public class StatusDecrease : MonoBehaviour
     public float thirstDropRate;
     public float hungerDropRate;
     
-    public Vector3 respawnPosition;
+    private Vector3 respawnPosition;
     
     private bool thirstIsDropping;
     private bool hungerIsDropping;
@@ -60,6 +60,8 @@ public class StatusDecrease : MonoBehaviour
         
         thirstIsDropping = true;
         decreaseThirst();
+        
+        respawnPosition = transform.position;
     }
 
     void Update()

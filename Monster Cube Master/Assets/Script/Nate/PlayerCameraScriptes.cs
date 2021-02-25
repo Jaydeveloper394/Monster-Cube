@@ -10,19 +10,45 @@ public class PlayerCameraScriptes : MonoBehaviour
     //Transform PlayerArms; 
 
     float xAxisclasmp;
+    bool cursorLocked;
 
     // Start is called before the first frame update
     void Start()
     {
         sensitivityOfMouse = 0.8f;
+        cursorLocked = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        CheckCursorLock();
+        DetectEscape();
+        
         RotateCamera();
     }
+    
+    private void DetectEscape()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+           cursorLocked = !cursorLocked;
+        }
+    }
+    
+    private void CheckCursorLock()
+    {
+       if(cursorLocked)
+       {
+          Cursor.lockState = CursorLockMode.Locked;
+       }
+       else
+       {
+          Cursor.lockState = CursorLockMode.None;
+       }
+    }
+    
+    
     void RotateCamera()
     {
         float mouseX = Input.GetAxis("Mouse X");
