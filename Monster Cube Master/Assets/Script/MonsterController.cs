@@ -4,11 +4,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class MonsterController : MonoBehaviour
-{ 
+{
+    #region PlayerController Variable Define
+    [SerializeField]
+    float speed = 4f;
+    float sprintspeed = 10f;
+    float gravity = 1f;
+    
+
+    float energy = 10f;
+
+    Vector3 movedirection;
+    CharacterController mycontroller;
 
 
+    #endregion
+
+    void Start()
+    {
+        mycontroller = GetComponent<CharacterController>();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        move();
+        
+    }
+    void move()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        if (mycontroller.isGrounded)
+        {
+            movedirection = new Vector3(moveX, 0, moveZ);
+            movedirection = transform.TransformDirection(movedirection);
+
+
+            /*if (Input.GetKeyDown(KeyCode.Space))
+            {
+                movedirection.y += jumpSpeed;
+            }*/
+
+            if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
+            {
+                movedirection *= sprintspeed;
+                energy -= 2f;
+
+            }
+            else
+            {
+                movedirection *= speed;
+            }
+
+        }
+
+        movedirection.y -= gravity;
+        //make sure different frame got same speed;
+        mycontroller.Move(movedirection * Time.deltaTime);
+
+    }
+
+    
+
+
+
+
+    /*
     //private variables
     private float moveSpeed = 5.0f;
     private float turnSpeed = 30.0f;
@@ -72,5 +139,5 @@ public class MonsterController : MonoBehaviour
         Quaternion rotate = Quaternion.Euler(0f, turn, 0f); //turns around the y axis
 
         rigidBody.MoveRotation(rigidBody.rotation * rotate);
-    }
+    }*/
 }
