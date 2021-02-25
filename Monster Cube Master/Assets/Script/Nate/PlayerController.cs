@@ -32,15 +32,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         move();
-        DetectExitGame();
     }
+    
+    
     void move()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -73,25 +73,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
         mycontroller.Move(movedirection * Time.deltaTime);
 
     }
+    
 
-    private void DetectExitGame()
+    public void ExitRoomInGameAndReload()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            //Update TODO: show the check box menu after press thee key
-            //{ }
-            ExitRoomInGameAndReload();
-        }
-    }
-
-
-    private void ExitRoomInGameAndReload()
-    {
+        Destroy(this.gameObject);
+       
         //Leave the Room
         PhotonNetwork.LeaveRoom();
-        //Application.Quit();
-        //Delete the Player prefeb in the game
-
 
         //Load the Room List menu
         PhotonNetwork.LoadLevel(0);

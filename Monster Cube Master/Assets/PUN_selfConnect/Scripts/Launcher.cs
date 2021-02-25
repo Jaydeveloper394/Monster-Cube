@@ -186,6 +186,9 @@ namespace Com.uci_167.shuaw11
 
             PhotonNetwork.LoadLevel(1);
 
+            //private int monsterRandom = Random(0,6);
+            //send Numbeer /event to Local
+            
         }
 
 
