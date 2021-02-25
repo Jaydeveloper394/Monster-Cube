@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     #endregion
 
+    #region PLayers flashlight Define
+
+    public Light flashlight;
+    private bool flashOn;
+
+    #endregion
+
 
     #region PlayerController Variable Define
     [SerializeField]
@@ -32,6 +39,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
+        flashOn = true;
     }
 
     // Update is called once per frame
@@ -54,7 +62,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                movedirection.y += jumpSpeed;
+                if (flashOn){
+                    flashlight.enabled = false;
+                    flashOn = false;
+                }
+                else{
+                    flashlight.enabled = true;
+                    flashOn = true;
+                }
+                //movedirection.y += jumpSpeed;
             }
 
             if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
