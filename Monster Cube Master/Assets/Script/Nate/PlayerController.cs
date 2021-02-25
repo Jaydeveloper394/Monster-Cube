@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         //Leave the Room
         PhotonNetwork.LeaveRoom();
+
         //Application.Quit();
         //Delete the Player prefeb in the game
 
