@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
+  flashlight: {fileID: 249858610}
   speed: 20
 --- !u!114 &2012031220
 MonoBehaviour:
