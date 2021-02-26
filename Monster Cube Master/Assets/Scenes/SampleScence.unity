@@ -3075,8 +3075,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hunger
-'
+  m_Text: 'Hunger '
 --- !u!222 &1045374600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3085,6 +3084,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045374597}
   m_CullTransparentMesh: 0
+--- !u!1 &1059650390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2071427832748965835, guid: 7e2c78d541109534cabf3f8050600118,
+    type: 3}
+  m_PrefabInstance: {fileID: 1188485699138413828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1059650396
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059650390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1076522191
 GameObject:
   m_ObjectHideFlags: 0
@@ -5698,8 +5721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Thirst
-'
+  m_Text: 'Thirst '
 --- !u!222 &1920124702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6293,6 +6315,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1188485699726656164, guid: 7e2c78d541109534cabf3f8050600118,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1726250912460809585, guid: 7e2c78d541109534cabf3f8050600118,
         type: 3}
       propertyPath: m_RootOrder
