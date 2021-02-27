@@ -15,8 +15,11 @@ public class PlayerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //check if in room
         playerNum = PhotonNetwork.CurrentRoom.PlayerCount;
         Debug.Log(playerNum);
+        //pick random player to be monster
+
     }
 
     // Update is called once per frame
@@ -24,4 +27,6 @@ public class PlayerSpawner : MonoBehaviour
     {
         
     }
+
+
 }

@@ -66,3 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db665c14702c4041b7af4a530966195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {x: 0, y: 0, z: 0}
+  playerPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
+    type: 3}
+  monsterPrefab: {fileID: 2071427832748965835, guid: 7e2c78d541109534cabf3f8050600118,
+    type: 3}

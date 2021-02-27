@@ -188,7 +188,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8380808256488477583}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 5174475018238770209, guid: 913c83344cea5df439c96768cd316629,
     type: 3}
+  flashlight: {fileID: 0}
   speed: 4
 --- !u!114 &8380808256488477577
 MonoBehaviour:

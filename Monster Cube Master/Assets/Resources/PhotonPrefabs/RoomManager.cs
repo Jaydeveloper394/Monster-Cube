@@ -41,8 +41,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //Load Sample Scence
         if(scene.buildIndex == 1)
         {
-            //
+            Debug.Log("build index is 1!");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            Debug.Log("instantiated player manager");
         }
     }
   
