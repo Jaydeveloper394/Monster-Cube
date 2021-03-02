@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+
+
+
 public class MonsterController : MonoBehaviour
 {
     #region PlayerController Variable Define
@@ -17,21 +20,42 @@ public class MonsterController : MonoBehaviour
 
     float energy = 10f;
 
+
+    PhotonView PV;
+
     Vector3 movedirection;
     CharacterController mycontroller;
 
 
     #endregion
 
+    void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
+
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
+
+        if (!PV.IsMine)
+        {
+            Destroy(GetComponentInChildren<Camera>().gameObject);
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
+       if(PV == null)
+        {
+            Debug.Log("photon view on monster is null");
+        }
+        if(!PV.IsMine)
+        {
+            return;
+        }
         move();
         
     }

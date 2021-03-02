@@ -23,7 +23,9 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(PV.IsMine)
          {
-             CreateController();
+            CreateController();
+
+            CreateMonsterController();
              
              //CreateMonsterController();
              //function that gets random nickname
@@ -45,9 +47,9 @@ public class PlayerManager2 : MonoBehaviour
 
     void CreateMonsterController()
     {
-        Vector3 spawn_pos = new Vector3(-140, 10, 990);
+        Vector3 spawn_pos = new Vector3(-132, 32, 1027);
         Debug.Log("Instantiated Monster Controller");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Slimey JoeGame Variant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
 
     }
 }
