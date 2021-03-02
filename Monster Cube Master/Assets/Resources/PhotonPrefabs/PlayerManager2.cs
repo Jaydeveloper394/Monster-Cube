@@ -11,7 +11,7 @@ public class PlayerManager2 : MonoBehaviour
     //and recive info from other platers
     PhotonView PV;
     Vector3 spawnPoint; //create a list of spawn points later
-   // GameObject playerPrefab;
+   public GameObject playerPrefab;
    // GameObject monsterPrefab;
 
     private void Awake()
@@ -22,21 +22,25 @@ public class PlayerManager2 : MonoBehaviour
     void Start()
     {
         if(PV.IsMine)
-        {
-            CreateController();
-            //CreateMonsterController();
-            //function that gets random nickname
-            //if nickname = our nickname
-            //createmonstercontroller();
-        }
+         {
+             CreateController();
+             
+             //CreateMonsterController();
+             //function that gets random nickname
+             //if nickname = our nickname
+             //createmonstercontroller();
+         }
+
+        
     }
 
     // Update is called once per frame
     void CreateController()
     {
-        Vector3 spawn_pos = new Vector3(-170, 50, 990);
+        Vector3 spawn_pos = new Vector3(-186, 32, 992);
         Debug.Log("Instantiated Player Controller");
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
+        //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???
     }
 
     void CreateMonsterController()
