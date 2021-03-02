@@ -22,12 +22,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     #region PlayerController Variable Define
     [SerializeField]
-    float speed = 4f;
+    float speed = 8f;
     float sprintspeed = 10f;
     float gravity = 1f;
     float jumpSpeed = 10f;
 
     float energy = 10f;
+
+    PhotonView PV;
 
     Vector3 movedirection;
     CharacterController mycontroller;
@@ -35,16 +37,30 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     #endregion
 
+    void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
         flashOn = true;
+
+        if (!PV.IsMine)
+        {
+            Destroy(GetComponentInChildren<Camera>().gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!PV.IsMine)
+        {
+            return;
+        }
         move();
     }
     

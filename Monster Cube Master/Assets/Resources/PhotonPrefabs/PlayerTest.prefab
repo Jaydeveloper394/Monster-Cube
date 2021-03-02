@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8380808256166915506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.10446739, y: -0.99, z: -5.17}
+  m_LocalPosition: {x: 0.10446739, y: -0.99, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8380808256488477591}
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 8380808256488477583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.215532, y: 1.87, z: 25.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 8380808257340451474}
   - {fileID: 8380808256166915507}
@@ -188,7 +188,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8380808256488477583}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -209,7 +209,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0.01
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8380808256488477578
 MonoBehaviour:
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 5174475018238770209, guid: 913c83344cea5df439c96768cd316629,
     type: 3}
+  flashlight: {fileID: 0}
   speed: 4
 --- !u!114 &8380808256488477577
 MonoBehaviour:

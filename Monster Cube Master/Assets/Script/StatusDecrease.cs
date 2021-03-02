@@ -92,14 +92,14 @@ public class StatusDecrease : MonoBehaviour
            decreaseHunger();
         }
         
-        if(healthSlider.value <= 0)
-        {
+       /* if(healthSlider.value <= 0)
+       {
            deathCount++;
            Debug.Log("Player health dropped to 0. Death Count: " + deathCount);
            transform.position = respawnPosition;
            healthSlider.value = healthSlider.maxValue;
            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+       }*/
         
     }
 }
