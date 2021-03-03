@@ -182,7 +182,7 @@ namespace Com.uci_167.shuaw11
         public void StartGame()
         {
             //set Auto Sync
-            bool AutomaticallySyncScene = true;
+            //bool AutomaticallySyncScene = true;
 
             PhotonNetwork.LoadLevel(1);
 
