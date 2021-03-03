@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float speed = 8f;
     float sprintspeed = 10f;
     float gravity = 1f;
-    //float jumpSpeed = 10f;
+    float jumpSpeed = 10f;
 
     float energy = 10f;
 

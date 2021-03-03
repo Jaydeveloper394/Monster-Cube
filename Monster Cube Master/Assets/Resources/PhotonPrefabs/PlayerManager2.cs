@@ -23,9 +23,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(PV.IsMine)
          {
-            CreateController();
-
-            //CreateMonsterController();
+             CreateController();
              
              //CreateMonsterController();
              //function that gets random nickname
@@ -39,28 +37,17 @@ public class PlayerManager2 : MonoBehaviour
     // Update is called once per frame
     void CreateController()
     {
-        if(PhotonNetwork.IsMasterClient)
-        {
-            Vector3 spawn_pos = new Vector3(-186, 32, 992);
-            Debug.Log("Instantiated Monster Controller");
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
-
-        }
-        else
-        {
-            Vector3 spawn_pos = new Vector3(-186, 32, 992);
-            Debug.Log("Instantiated Player Controller");
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
-                                                                                                                    //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???
-        }
-
+        Vector3 spawn_pos = new Vector3(-186, 32, 992);
+        Debug.Log("Instantiated Player Controller");
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
+        //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???
     }
 
     void CreateMonsterController()
     {
-        Vector3 spawn_pos = new Vector3(-132, 32, 1027);
+        Vector3 spawn_pos = new Vector3(-140, 10, 990);
         Debug.Log("Instantiated Monster Controller");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Slimey JoeGame Variant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
 
     }
 }
