@@ -26,6 +26,11 @@ public class MonsterController : MonoBehaviour
     Vector3 movedirection;
     CharacterController mycontroller;
 
+    private float turnSpeed = 30.0f;
+
+    private Rigidbody rigidBody;
+
+
 
     #endregion
 
@@ -37,6 +42,7 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         mycontroller = GetComponent<CharacterController>();
+        rigidBody = GetComponent<Rigidbody>();
 
         if (!PV.IsMine)
         {
@@ -57,6 +63,7 @@ public class MonsterController : MonoBehaviour
             return;
         }
         move();
+        turn();
         
     }
     void move()
@@ -92,6 +99,26 @@ public class MonsterController : MonoBehaviour
         //make sure different frame got same speed;
         mycontroller.Move(movedirection * Time.deltaTime);
 
+    }
+
+    private void turn()
+    {
+        float turnDirection = 0;
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            turnDirection = 1;
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            turnDirection = -1;
+        }
+
+        float turn = turnDirection * turnSpeed * Time.deltaTime;
+
+        Quaternion rotate = Quaternion.Euler(0f, turn, 0f); //turns around the y axis
+
+        rigidBody.MoveRotation(rigidBody.rotation * rotate);
+        
     }
 
     
