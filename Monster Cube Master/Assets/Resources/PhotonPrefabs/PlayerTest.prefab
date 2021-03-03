@@ -239,8 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f53f9b9e2d84ed40803f0cc2c23849e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 4322243147491039996, guid: a022f94966014fe4fbdaf89060a73cf1,
-    type: 3}
+  healthSlider: {fileID: 0}
   thirstSlider: {fileID: 6933927575653292951, guid: 45ac6a9bf9cf24841925fcbf6c6a1125,
     type: 3}
   hungerSlider: {fileID: 7846735140163861793, guid: 4243449cfe9048a48aef6e4a3aa33b41,
