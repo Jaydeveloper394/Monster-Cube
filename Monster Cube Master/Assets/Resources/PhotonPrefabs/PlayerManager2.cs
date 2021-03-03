@@ -41,7 +41,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            Vector3 spawn_pos = new Vector3(-186, 32, 992);
+            Vector3 spawn_pos = new Vector3(-186, 36, 992);
             Debug.Log("Instantiated Monster Controller");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
 
