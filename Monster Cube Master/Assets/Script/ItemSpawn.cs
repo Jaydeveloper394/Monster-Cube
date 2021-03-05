@@ -37,7 +37,7 @@ public class ItemSpawn : MonoBehaviour
     {
         for (int i = 0; i<waterLocations.Length; i++){
             GameObject newWater = Instantiate(water, waterLocations[i].transform.position, Quaternion.identity);
-            newWater.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            newWater.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
 
@@ -45,7 +45,7 @@ public class ItemSpawn : MonoBehaviour
     {
         for (int i = 0; i<foodLocations.Length; i++){
             GameObject newFood = Instantiate(food, foodLocations[i].transform.position, Quaternion.identity);
-            newFood.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            newFood.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
 }
