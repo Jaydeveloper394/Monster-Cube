@@ -36,14 +36,16 @@ public class ItemSpawn : MonoBehaviour
     private void spawnWater()
     {
         for (int i = 0; i<waterLocations.Length; i++){
-            GameObject.Instantiate(water, waterLocations[i].transform.position, Quaternion.identity);
+            GameObject newWater = Instantiate(water, waterLocations[i].transform.position, Quaternion.identity);
+            newWater.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 
     private void spawnFood()
     {
         for (int i = 0; i<foodLocations.Length; i++){
-            GameObject.Instantiate(food, foodLocations[i].transform.position, Quaternion.identity);
+            GameObject newFood = Instantiate(food, foodLocations[i].transform.position, Quaternion.identity);
+            newFood.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 }

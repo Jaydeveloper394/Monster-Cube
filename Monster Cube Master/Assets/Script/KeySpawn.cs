@@ -36,7 +36,8 @@ public class KeySpawn : MonoBehaviour
                 continue;
             }
             else{
-                GameObject.Instantiate(key, keyLocations[spawn].transform.position, Quaternion.identity);
+                GameObject newKey = Instantiate(key, keyLocations[spawn].transform.position, Quaternion.identity);
+                newKey.transform.localScale = new Vector3(0.10159f, 0.10159f, 0.10159f);
                 keys[spawn] = true;
                 count +=1;
             }
