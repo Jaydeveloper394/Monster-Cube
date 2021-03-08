@@ -117,7 +117,9 @@ public class MonsterController : MonoBehaviour
 
         Quaternion rotate = Quaternion.Euler(0f, turn, 0f); //turns around the y axis
 
-        rigidBody.MoveRotation(rigidBody.rotation * rotate);
+        //rigidBody.MoveRotation(rigidBody.rotation * rotate);
+        transform.Rotate(0, turn, 0);
+
         
     }
 
