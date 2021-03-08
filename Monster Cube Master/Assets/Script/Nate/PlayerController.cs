@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
         }
+        else
+        {
+            GetComponentInChildren<Canvas>().enabled = true;
+        }
     }
 
     // Update is called once per frame

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 8813779404641625327}
-  flashlight: {fileID: 0}
+  flashlight: {fileID: 8380808256166915516}
   speed: 4
 --- !u!114 &8380808256488477577
 MonoBehaviour:
@@ -242,7 +242,7 @@ MonoBehaviour:
   healthSlider: {fileID: 8813779404704246361}
   thirstSlider: {fileID: 8813779404979995592}
   hungerSlider: {fileID: 8813779403550722677}
-  healthDropRate: 1
+  healthDropRate: 0.25
   thirstDropRate: 16
   hungerDropRate: 16
 --- !u!114 &8380808256488477576
@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2986454140346842493, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8380808256488477578}
     - target: {fileID: 2986454140379220870, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -586,6 +591,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986454141231741365, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986454141231741365, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986454141231741365, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986454141231741365, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -643,6 +663,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986454141231741366, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986454141231741366, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2986454141376951459, guid: 7cba3bc9741b6b94b8b5369767d8dce7,
         type: 3}
