@@ -8,6 +8,7 @@ TagManager:
   - KeySpawn
   - FoodSpawn
   - WaterSpawn
+  - Door
   layers:
   - Default
   - TransparentFX
