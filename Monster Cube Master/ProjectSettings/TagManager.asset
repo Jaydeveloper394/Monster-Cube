@@ -9,6 +9,11 @@ TagManager:
   - FoodSpawn
   - WaterSpawn
   - Door
+  - PlayerSpawn1
+  - PlayerSpawn2
+  - PlayerSpawn3
+  - PlayerSpawn4
+  - MonsterSpawn
   layers:
   - Default
   - TransparentFX
