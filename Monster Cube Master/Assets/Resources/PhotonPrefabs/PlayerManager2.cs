@@ -41,7 +41,10 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            Vector3 spawn_pos = new Vector3(-186, 37, 992);
+            GameObject spawner = GameObject.FindGameObjectWithTag("MonsterSpawn");
+
+            //Vector3 spawn_pos = new Vector3(-186, 37, 992);
+            Vector3 spawn_pos = spawner.transform.position;
             Debug.Log("Instantiated Monster Controller");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
 
@@ -56,11 +59,5 @@ public class PlayerManager2 : MonoBehaviour
 
     }
 
-    void CreateMonsterController()
-    {
-        Vector3 spawn_pos = new Vector3(-132, 32, 1027);
-        Debug.Log("Instantiated Monster Controller");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SlimeyJoeGameVariant"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
-
-    }
+   
 }
