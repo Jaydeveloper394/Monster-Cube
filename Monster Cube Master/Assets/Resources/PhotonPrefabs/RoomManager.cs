@@ -5,6 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -35,7 +36,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
 
-    private bool __NateDebug = true;
+    private bool __NateDebug = false;
     #endregion
 
     private void Awake()
@@ -81,7 +82,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             pplayer.GetComponent<PlayerController>();
         }
 
-        AddingDictionary();
+       // AddingDictionary();
 
     }
     void Update()
@@ -94,7 +95,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         CheckTime();
     }
-
+/**
+   //Using  Local variable to justice, so didn't use the PUN function to decide
     /// <summary>
     /// Get player's infor Dictionary
     /// </summary>
@@ -102,20 +104,27 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         playerInfo = PhotonNetwork.CurrentRoom.Players;
 
-        for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+        if (playerInfo != null)
         {
-            Debug.Log("playerInfo[" + i + "].UserId = " + playerInfo[i].UserId + "\n");
-
-
-            if (playerInfo[i].IsMasterClient)
+            for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
             {
-                playerInfo.Remove(i);
-                break;
+*//*                if (playerInfo[i] != null)
+                {
+                    Debug.Log("playerInfo[" + i + "].UserId = " + playerInfo[i].UserId + "\n");
+                }*//*
+
+
+                if (playerInfo[i].IsMasterClient)
+                {
+                    playerInfo.Remove(i);
+                    break;
+                }
             }
         }
+        
 
     }
-
+*/
 
     private void CheckTime()
     {
@@ -158,7 +167,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
             GameObject gb_temp = GameObject.FindGameObjectWithTag("Player");
-            if (gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All())
+            if ( (gb_temp != null) && gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All())
             {
                 Debug.Log("gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All = " + gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All() + "\n");
 
@@ -172,8 +181,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             //Frozen the game
             Time.timeScale = 0f;
+            showWinText();
         }
 
+    }
+
+
+    /// <summary>
+    /// show who win the game
+    /// </summary>
+    private void showWinText()
+    {
+       
     }
 
 

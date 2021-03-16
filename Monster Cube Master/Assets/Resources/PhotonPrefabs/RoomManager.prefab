@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   para_count: 0
-  TimeLimited: 50
+  TimeLimited: 300
   playersList: []
 --- !u!114 &314413808788273131
 MonoBehaviour:
