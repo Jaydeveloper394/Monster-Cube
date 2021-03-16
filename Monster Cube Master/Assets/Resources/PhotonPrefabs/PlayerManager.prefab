@@ -68,5 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
     type: 3}
-  TimeLimited: 300
-  playersList: []
+  playerTransformPosition:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

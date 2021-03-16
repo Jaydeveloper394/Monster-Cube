@@ -13,7 +13,8 @@ public class PlayerManager2 : MonoBehaviour
     PhotonView PV;
     Vector3 spawnPoint; //create a list of spawn points later
     public GameObject playerPrefab;
-    
+
+    public Transform[] playerTransformPosition;
 
     // GameObject monsterPrefab;
 
@@ -68,9 +69,22 @@ public class PlayerManager2 : MonoBehaviour
         }
         else
         {
-            Vector3 spawn_pos = new Vector3(-186, 32, 992);
+            //Tage  PlayerSpawn2 for palyer swpan 
+            /*int num = 0;
+            Vector3 spawn_pos = playerTransformPosition[num].position;
+
+            string playerTag = "Player" + num;*/
+            // num++;
+
+            GameObject spawner = GameObject.FindGameObjectWithTag("PlayerSpawn2");
+            Vector3 spawn_pos = spawner.transform.position;
+
             Debug.Log("Instantiated Player Controller");
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
+            GameObject gb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity) as GameObject;
+            //gb.transform.tag = playerTag;
+
+
+            //public vars that you put prefabs into
                                                             //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???   =>  may be didn't haave the punview? 
            
         }

@@ -15,7 +15,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     bool Monster_Win = false;
     bool player_Win = false;
 
-    public bool flag_playerGetKey = false;
     //num
     public int para_count = 0;
 
@@ -33,6 +32,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public Dictionary<int, Photon.Realtime.Player> playerInfo;
     public List<GameObject> playersList;
+
+
+
+    private bool __NateDebug = true;
     #endregion
 
     private void Awake()
@@ -83,10 +86,14 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        CheckTime();
+
         Checkwin();
     }
 
+    private void FixedUpdate()
+    {
+        CheckTime();
+    }
 
     /// <summary>
     /// Get player's infor Dictionary
@@ -113,11 +120,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
     private void CheckTime()
     {
         TimeLimited -= Time.deltaTime;
-        if (TimeLimited == 0)
+        if (TimeLimited <= 0)
         {
             GameOver = true;
             Monster_Win = true;
         }
+
+        if (__NateDebug)
+        {
+            Debug.Log("TimeLimited = " + TimeLimited + "\n");
+        }
+        
     }
 
     
@@ -134,13 +147,23 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if (!GameOver)
         {
+            //Check the number of the paralyed
+            para_count = CountParalyzed();
+
             if (para_count == (PhotonNetwork.CurrentRoom.PlayerCount-1))
             {
                 GameOver = true;
                 Monster_Win = true;
             }
-            if (flag_playerGetKey)
+
+
+            GameObject gb_temp = GameObject.FindGameObjectWithTag("Player");
+            if (gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All())
             {
+                Debug.Log("gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All = " + gb_temp.GetComponent<PlayerController>().Get_PlayerHasKey_All() + "\n");
+
+
+                Debug.LogWarning("Game over");
                 GameOver = true;
                 player_Win = true;
             }
@@ -153,4 +176,24 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
+
+    /// <summary>
+    /// Get the number of paralyzed players
+    /// 
+    /// </summary>
+    private int CountParalyzed()
+    {
+        para_count = 0;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            bool para = player.GetComponent<StatusDecrease>().isparalyzed;
+            if (para)
+            {
+                para_count++;
+            }
+        }
+
+        return para_count;
+    }
 }

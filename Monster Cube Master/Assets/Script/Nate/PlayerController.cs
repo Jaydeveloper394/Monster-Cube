@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     bool PlayerHasKey = false;
     bool PlayerHasKey_All = false;
 
-    RoomManager rmm;
+
 
     #region Inventory Controller Variable Define
 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         mycontroller = GetComponent<CharacterController>();
         flashOn = true;
-        rmm = GetComponent<RoomManager>();
+
 
         if (!PV.IsMine)
         {
@@ -75,9 +75,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             return;
         }
         move();
-        if (PlayerHasKey_All )
+        if (PlayerHasKey )
         {
-            PV.RPC("Get_PlayerHasKeyANDTouchDoor()", RpcTarget.AllBuffered);
+            PV.RPC("Get_PlayerHasKeyANDTouchDoor", RpcTarget.AllBuffered);
         }
     }
     
@@ -119,7 +119,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         movedirection.y -= gravity;
         //make sure different frame got same speed;
-        mycontroller.Move(movedirection * Time.deltaTime);
+        if (this.gameObject.GetComponent<StatusDecrease>().isparalyzed == false)
+        {
+            mycontroller.Move(movedirection * Time.deltaTime);
+        }
 
     }
     
@@ -135,6 +138,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(0);
     }
 
+    public bool Get_PlayerHasKey_All()
+    {
+        return PlayerHasKey_All;
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -154,13 +161,28 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
-       
+        
+
         ///Version 2.0 - Food, water, Key only for the valueable item for player
         if (item != null)
         {
-            Debug.Log("Detect collision with Item");
+            //Debug.Log("Detect collision with Item");
             inventory.AddItem(item);
         }
+
+        if (hit.collider.tag == "Door")
+        {
+            //Debug.Log("Collision Happened\n");
+
+            bool flag_key = inventory.IncludeItem("key");
+
+            if (flag_key)
+            {
+                //Debug.Log("Player got the key and collider with the door");
+                PlayerHasKey = true;
+            }
+        }
+       
 
     }
 
@@ -183,14 +205,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     /// //Only for check touch the door or not and have key
     /// </summary>
     /// <param name="other"></param>
-    public void OnColliderEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        bool flag_key = inventory.IncludeItem("key");
-        if (other.tag == "door" && flag_key)
-        {
-            Debug.Log("Player got the key and collider with the door");
-            PlayerHasKey = true;
-        }
+       
     }
 
     /// <summary>
@@ -203,8 +220,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (PlayerHasKey)
         {
             PlayerHasKey_All = true;
-            rmm.flag_playerGetKey = true;
-            Debug.Log("player get the key aand touch the door\n");
+
+            //Debug.Log("player get the key aand touch the door\n");
         }  
     }
 

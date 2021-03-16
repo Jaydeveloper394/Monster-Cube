@@ -20,7 +20,9 @@ public class StatusDecrease : MonoBehaviour
     private bool hungerIsDropping;
     
     private int deathCount;
-    
+
+    public bool isparalyzed { get; private set; }
+
     public void decreaseThirst()
     {
        thirstIsDropping = true;
@@ -96,10 +98,15 @@ public class StatusDecrease : MonoBehaviour
        {
            deathCount++;
            Debug.Log("Player health dropped to 0. Death Count: " + deathCount);
-           transform.position = respawnPosition;
+           //transform.position = respawnPosition;
            healthSlider.value = healthSlider.maxValue;
-           //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-       }
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            isparalyzed = true;
+            //paralyze_count++;
+            gameObject.GetComponent<CharacterController>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        }
         
     }
 }
