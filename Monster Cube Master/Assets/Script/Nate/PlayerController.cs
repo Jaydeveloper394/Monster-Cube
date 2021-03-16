@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 {
 
     //mark Player has key or not
-    static bool PlayerHasKey = false;
-    static bool PlayerHasKey_All = false;
+    bool PlayerHasKey = false;
+    bool PlayerHasKey_All = false;
 
+    RoomManager rmm;
 
     #region Inventory Controller Variable Define
 
@@ -51,8 +52,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+
         mycontroller = GetComponent<CharacterController>();
         flashOn = true;
+        rmm = GetComponent<RoomManager>();
 
         if (!PV.IsMine)
         {
@@ -72,6 +75,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
             return;
         }
         move();
+        if (PlayerHasKey_All )
+        {
+            PV.RPC("Get_PlayerHasKeyANDTouchDoor()", RpcTarget.AllBuffered);
+        }
     }
     
     
@@ -191,13 +198,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     /// </summary>
     /// <returns></returns> if yes, return true;
     [PunRPC]
-    public static bool Get_PlayerHasKeyANDTouchDoor()
+    public void Get_PlayerHasKeyANDTouchDoor()
     {
         if (PlayerHasKey)
         {
             PlayerHasKey_All = true;
-        }
-        return PlayerHasKey;     
+            rmm.flag_playerGetKey = true;
+            Debug.Log("player get the key aand touch the door\n");
+        }  
     }
+
+    
 
 }

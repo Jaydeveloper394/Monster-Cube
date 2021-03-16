@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     bool Monster_Win = false;
     bool player_Win = false;
 
+    public bool flag_playerGetKey = false;
     //num
     public int para_count = 0;
 
@@ -138,7 +139,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 GameOver = true;
                 Monster_Win = true;
             }
-            if (PlayerController.Get_PlayerHasKeyANDTouchDoor())
+            if (flag_playerGetKey)
             {
                 GameOver = true;
                 player_Win = true;
