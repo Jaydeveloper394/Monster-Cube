@@ -9,11 +9,15 @@ TagManager:
   - FoodSpawn
   - WaterSpawn
   - Door
+<<<<<<< Updated upstream
   - PlayerSpawn1
   - PlayerSpawn2
   - PlayerSpawn3
   - PlayerSpawn4
   - MonsterSpawn
+=======
+  - PlayerManager
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

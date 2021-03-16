@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using System;
 
 public class PlayerManager2 : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class PlayerManager2 : MonoBehaviour
     //and recive info from other platers
     PhotonView PV;
     Vector3 spawnPoint; //create a list of spawn points later
-   public GameObject playerPrefab;
-   // GameObject monsterPrefab;
+    public GameObject playerPrefab;
+    
+
+    // GameObject monsterPrefab;
 
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
+     
     }
     // Start is called before the first frame update
     void Start()
@@ -33,12 +37,25 @@ public class PlayerManager2 : MonoBehaviour
              //createmonstercontroller();
          }
 
-        
+
+
     }
+
+
+    private void Update()
+    {
+
+    }
+
+
+
 
     // Update is called once per frame
     void CreateController()
     {
+        //Dictionary Key
+        int counter_palyerDic = 0;
+
         if(PhotonNetwork.IsMasterClient)
         {
             GameObject spawner = GameObject.FindGameObjectWithTag("MonsterSpawn");
@@ -54,7 +71,8 @@ public class PlayerManager2 : MonoBehaviour
             Vector3 spawn_pos = new Vector3(-186, 32, 992);
             Debug.Log("Instantiated Player Controller");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity); //public vars that you put prefabs into
-                                                                                                                    //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???
+                                                            //Instantiate(playerPrefab, spawn_pos, Quaternion.identity); //doesnt work either??? why???   =>  may be didn't haave the punview? 
+           
         }
 
     }

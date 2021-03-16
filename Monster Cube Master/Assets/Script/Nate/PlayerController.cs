@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
+
+    //mark Player has key or not
+    static bool PlayerHasKey = false;
+    static bool PlayerHasKey_All = false;
+
+
     #region Inventory Controller Variable Define
 
     public InventoryController inventory;
@@ -151,5 +157,47 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     }
 
+    /// <summary>
+    ///     Return the player's status : if player down?  return true : false;
+    /// </summary>
+    /// <param name="player"></param>  The parameter need to be a gameobject
+    /// <returns></returns>  eturn a bool = true, if the player  is down
+
+    public bool CheckPlayerParalyzed(GameObject player)
+    {
+
+        Debug.LogWarning("The function didn't finished yet.");
+        return false;
+    }
+
+    //local
+    //event
+    /// <summary>
+    /// //Only for check touch the door or not and have key
+    /// </summary>
+    /// <param name="other"></param>
+    public void OnColliderEnter(Collider other)
+    {
+        bool flag_key = inventory.IncludeItem("key");
+        if (other.tag == "door" && flag_key)
+        {
+            Debug.Log("Player got the key and collider with the door");
+            PlayerHasKey = true;
+        }
+    }
+
+    /// <summary>
+    ///     Return The player get the Key and Touch the door at the saame Time
+    /// </summary>
+    /// <returns></returns> if yes, return true;
+    [PunRPC]
+    public static bool Get_PlayerHasKeyANDTouchDoor()
+    {
+        if (PlayerHasKey)
+        {
+            PlayerHasKey_All = true;
+        }
+        return PlayerHasKey;     
+    }
 
 }

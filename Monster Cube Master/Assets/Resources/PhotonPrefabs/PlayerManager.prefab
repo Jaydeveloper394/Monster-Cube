@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5528220737416105498}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: PlayerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,3 +68,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
     type: 3}
+  TimeLimited: 300
+  playersList: []

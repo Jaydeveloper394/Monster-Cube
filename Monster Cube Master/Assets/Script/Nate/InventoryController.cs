@@ -116,6 +116,19 @@ public class InventoryController : MonoBehaviour
             }
        }
     }
+
+    public bool IncludeItem(string ItemName)
+    {
+        foreach (var item in mItems)
+        {
+            if (item.Name == ItemName)
+            {
+                return true;
+               
+            }
+        }
+        return false;
+    }
     
     void Update()
     {
