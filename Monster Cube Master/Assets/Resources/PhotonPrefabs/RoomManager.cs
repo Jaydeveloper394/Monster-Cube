@@ -179,8 +179,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            //Frozen the game
-            Time.timeScale = 0f;
             showWinText();
         }
 
@@ -194,11 +192,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
        if(Monster_Win)
        {
+            //prevent loading the scene every frame
+            Monster_Win = false;
             SceneManager.LoadScene("MonsterWinScene");
        }
 
        if(player_Win)
        {
+            //prevent loading the scene every frame
+            player_Win = false;
             SceneManager.LoadScene("PlayerWinScene");
        }
     }
