@@ -192,7 +192,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     /// </summary>
     private void showWinText()
     {
-       
+       if(Monster_Win)
+       {
+            SceneManager.LoadScene("MonsterWinScene");
+       }
+
+       if(player_Win)
+       {
+            SceneManager.LoadScene("PlayerWinScene");
+       }
     }
 
 
