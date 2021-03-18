@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class StatusDecrease : MonoBehaviour
+public class StatusDecrease : PlayerController
 {
     public Slider healthSlider;
     public Slider thirstSlider;
@@ -21,7 +21,18 @@ public class StatusDecrease : MonoBehaviour
     
     private int deathCount;
 
-    public bool isparalyzed { get; private set; }
+    public bool isparalyzed;
+
+    public bool Get_isparalyzed()
+    {
+        return isparalyzed;
+    }
+
+    public void Set_isParalyzed(bool newisparalyzed)
+    {
+        isparalyzed = newisparalyzed;
+    }
+
 
     public void decreaseThirst()
     {
