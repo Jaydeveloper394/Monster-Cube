@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 8380808256166915516}
-  speed: 4
+  speed: 9
 --- !u!114 &8380808256488477577
 MonoBehaviour:
   m_ObjectHideFlags: 0

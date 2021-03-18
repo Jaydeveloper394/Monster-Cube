@@ -352,6 +352,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1188485699726656165, guid: 7e2c78d541109534cabf3f8050600118,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1726250912460809585, guid: 7e2c78d541109534cabf3f8050600118,
         type: 3}
       propertyPath: m_RootOrder
