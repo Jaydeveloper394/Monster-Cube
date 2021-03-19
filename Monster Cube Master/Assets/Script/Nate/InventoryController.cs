@@ -26,7 +26,13 @@ public class InventoryController : MonoBehaviour
     /// <param name="item"></param>
     public void AddItem(IInventoryItem item)
     {
-        if(mItems.Count < SLOTS)
+/*        if (item.Name == "key")
+        {
+            GameObject gb = GameObject.FindGameObjectWithTag("Player");
+            gb.GetComponent<PlayerController>().haskey = true;
+        }*/
+
+        if (mItems.Count < SLOTS)
         {
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
             

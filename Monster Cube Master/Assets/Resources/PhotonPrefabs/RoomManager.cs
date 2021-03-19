@@ -162,12 +162,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
             //Check the number of the paralyed
             para_count = CountParalyzed();
 
-            if (para_count == (PhotonNetwork.CurrentRoom.PlayerCount-1))
+ /*           if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                GameOver = true;
+                player_Win = true;
+            }
+            */
+            if ( para_count == (PhotonNetwork.CurrentRoom.PlayerCount - 1))
             {
                 GameOver = true;
                 Monster_Win = true;
-                player_Win = false;
-                scenceIndex = 2;
             }
 
 

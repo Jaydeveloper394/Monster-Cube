@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
     //Debug
     [SerializeField]
     bool __NateDebug = true;
-
+    public bool flag_key;
 
     //mark Player has key or not
-    bool PlayerHasKey = false;
-    public bool PlayerHasKey_All = false;
+    //public bool haskey =false;
+     bool PlayerHasKey;
+    public static bool PlayerHasKey_All;
 
     GameObject gameManager;
 
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             foreach (var ga in PhotonNetwork.PlayerList)
             {
-                    Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
+                    Debug.Log(this.gameObject.name +  "'s Haskey value: " + PlayerHasKey + "\n");
             }
 
 
@@ -94,7 +95,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
             foreach (Photon.Realtime.Player cct in tf)
             {
-                PV.RPC("Get_PlayerHasKeyANDTouchDoor", cct, null);
+                PV.RPC("Get_PlayerHasKeyANDTouchDoor", cct);
+                
             }
             
 
@@ -192,7 +194,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             //Debug.Log("Collision Happened\n");
 
-            bool flag_key = inventory.IncludeItem("key");
+            flag_key = inventory.IncludeItem("key");
 
             if (flag_key)
             {
@@ -241,7 +243,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PlayerHasKey)
         {
-            PlayerHasKey = true;
+           
             PlayerHasKey_All = true;
             Debug.Log(PhotonNetwork.LocalPlayer.UserId + "" + PlayerHasKey);
             //PhotonNetwork.SetMasterClient(photonView);

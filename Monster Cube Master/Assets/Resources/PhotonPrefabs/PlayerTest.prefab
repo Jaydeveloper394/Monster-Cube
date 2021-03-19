@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __NateDebug: 0
-  PlayerHasKey_All: 0
+  flag_key: 0
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 8380808256166915516}
   speed: 9
@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __NateDebug: 0
-  PlayerHasKey_All: 0
-  inventory: {fileID: 0}
+  flag_key: 0
+  inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 0}
   speed: 8
   healthSlider: {fileID: 8813779404704246361}
