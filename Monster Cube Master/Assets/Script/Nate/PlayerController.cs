@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
+    //Debug
+    [SerializeField]
+    bool __NateDebug = false;
+
 
     //mark Player has key or not
     bool PlayerHasKey = false;
@@ -143,12 +147,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         return PlayerHasKey_All;
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
     private void OnTriggerExit(Collider other)
     {
        //if inventory is full, make item obtainable again
@@ -199,17 +197,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         return false;
     }
 
-    //local
-    //event
-    /// <summary>
-    /// //Only for check touch the door or not and have key
-    /// </summary>
-    /// <param name="other"></param>
-    public void OnCollisionEnter(Collision other)
-    {
-       
-    }
-
     /// <summary>
     ///     Return The player get the Key and Touch the door at the saame Time
     /// </summary>
@@ -225,6 +212,32 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }  
     }
 
-    
+   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (__NateDebug)
+        {
+            Debug.Log("Player collision.");
+        
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            if (__NateDebug)
+            {
+                Debug.Log("Player collision.");
+
+            }
+
+            if (gameObject.GetComponent<StatusDecrease>().isparalyzed)
+            {
+                gameObject.GetComponent<StatusDecrease>().isparalyzed = false;
+                gameObject.GetComponent<CapsuleCollider>().enabled = false;
+                gameObject.GetComponent<CharacterController>().enabled = true;
+
+            }
+        }
+    }
+
+
 
 }

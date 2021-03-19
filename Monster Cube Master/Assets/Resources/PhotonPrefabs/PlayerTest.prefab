@@ -124,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8380808256488477583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.215532, y: 1.87, z: 25.83}
+  m_LocalPosition: {x: 22.02, y: 1.65, z: 25.93}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 8380808257340451474}
@@ -188,9 +188,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8380808256488477583}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d400cf6abde784e959cf178f5954ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __NateDebug: 0
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 8380808256166915516}
   speed: 9
@@ -239,12 +240,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f53f9b9e2d84ed40803f0cc2c23849e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __NateDebug: 0
+  inventory: {fileID: 0}
+  flashlight: {fileID: 0}
+  speed: 8
   healthSlider: {fileID: 8813779404704246361}
   thirstSlider: {fileID: 8813779404979995592}
   hungerSlider: {fileID: 8813779403550722677}
   healthDropRate: 0.25
   thirstDropRate: 16
   hungerDropRate: 16
+  isparalyzed: 0
 --- !u!114 &8380808256488477576
 MonoBehaviour:
   m_ObjectHideFlags: 0
