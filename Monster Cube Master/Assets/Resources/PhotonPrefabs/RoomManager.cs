@@ -206,7 +206,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             //prevent loading the scene every frame
              Monster_Win = false;
              SceneManager.LoadScene("MonsterWinScene");
-             //Invoke("KickRoom", 3);
+             Invoke("KickRoom", 3);
 
             
         }
@@ -216,7 +216,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
                         //prevent loading the scene every frame
             player_Win = false;
             SceneManager.LoadScene("PlayerWinScene");
-            //Invoke("KickRoom", 3);
+            Invoke("KickRoom", 3);
             //PhotonNetwork.LoadLevel(3);
 
         }
