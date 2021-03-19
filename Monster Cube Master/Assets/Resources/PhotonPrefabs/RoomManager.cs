@@ -16,6 +16,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     bool Monster_Win = false;
     bool player_Win = false;
 
+    public static float scenceIndex = -1;
+
     //num
     public int para_count = 0;
 
@@ -133,6 +135,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             GameOver = true;
             Monster_Win = true;
+            scenceIndex = 2;
         }
 
         if (__NateDebug)
@@ -163,6 +166,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
             {
                 GameOver = true;
                 Monster_Win = true;
+                player_Win = false;
+                scenceIndex = 2;
             }
 
 
@@ -175,6 +180,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 Debug.LogWarning("Game over");
                 GameOver = true;
                 player_Win = true;
+                Monster_Win = false;
+                scenceIndex = 3;
             }
         }
         else
@@ -193,22 +200,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
        if(Monster_Win)
        {
             //prevent loading the scene every frame
-            Monster_Win = false;
-            SceneManager.LoadScene("MonsterWinScene");
+             Monster_Win = false;
+             SceneManager.LoadScene("MonsterWinScene");
+             //Invoke("KickRoom", 3);
 
-            PhotonView pv_master = GameObject.FindGameObjectWithTag("Monster").GetComponent<PhotonView>();
-            //RPC.PV();
-            Invoke("KickRoom", 3);
-
+            
         }
 
        if(player_Win)
        {
-            //prevent loading the scene every frame
+                        //prevent loading the scene every frame
             player_Win = false;
             SceneManager.LoadScene("PlayerWinScene");
-            Invoke("KickRoom", 3);
-           
+            //Invoke("KickRoom", 3);
+            //PhotonNetwork.LoadLevel(3);
+
         }
     }
 

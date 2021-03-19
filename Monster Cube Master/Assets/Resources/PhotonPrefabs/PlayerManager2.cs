@@ -80,7 +80,7 @@ public class PlayerManager2 : MonoBehaviour
             Vector3 spawn_pos = spawner.transform.position;
 
             Debug.Log("Instantiated Player Controller");
-            GameObject gb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity) as GameObject;
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity);
             //gb.transform.tag = playerTag;
 
 

@@ -3,19 +3,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
     //Debug
     [SerializeField]
-    bool __NateDebug = false;
+    bool __NateDebug = true;
 
 
     //mark Player has key or not
     bool PlayerHasKey = false;
-    bool PlayerHasKey_All = false;
+    public bool PlayerHasKey_All = false;
 
-
+    GameObject gameManager;
 
     #region Inventory Controller Variable Define
 
@@ -56,6 +57,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        if (__NateDebug)
+        {
+            foreach (var ga in PhotonNetwork.PlayerList)
+            {
+                    Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
+            }
+
+
+        }
 
         mycontroller = GetComponent<CharacterController>();
         flashOn = true;
@@ -81,7 +91,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
         move();
         if (PlayerHasKey )
         {
-            PV.RPC("Get_PlayerHasKeyANDTouchDoor", RpcTarget.AllBuffered);
+            Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
+            foreach (Photon.Realtime.Player cct in tf)
+            {
+                PV.RPC("Get_PlayerHasKeyANDTouchDoor", cct, null);
+            }
+            
+
+            if (__NateDebug)
+            {
+                Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
+            }
         }
     }
     
@@ -96,7 +116,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             movedirection = new Vector3(moveX, 0, moveZ);
             movedirection = transform.TransformDirection(movedirection);
 
-
+            
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 if (flashOn){
@@ -149,11 +169,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void OnTriggerExit(Collider other)
     {
-       //if inventory is full, make item obtainable again
-       if(other.tag == "Item")
-       {
-          other.isTrigger = false;
-       }
+        //if inventory is full, make item obtainable again
+        if (other.tag == "Item")
+        {
+            other.isTrigger = false;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -178,6 +198,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 //Debug.Log("Player got the key and collider with the door");
                 PlayerHasKey = true;
+                if(__NateDebug)
+                {
+                    Debug.Log("Playerwin");
+                    PhotonNetwork.LoadLevel(3);
+                    SceneManager.LoadScene("PlayerWinScene");
+                }
+                
+            }
+
+            if (__NateDebug)
+            {
+                if (PhotonNetwork.LocalPlayer.IsMasterClient && PlayerHasKey)
+                {
+                    Debug.LogWarning("Monster get the Player win condition \n");
+                }
             }
         }
        
@@ -206,7 +241,29 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PlayerHasKey)
         {
+            PlayerHasKey = true;
             PlayerHasKey_All = true;
+            Debug.Log(PhotonNetwork.LocalPlayer.UserId + "" + PlayerHasKey);
+            //PhotonNetwork.SetMasterClient(photonView);
+            //SceneManager.LoadScene("PlayerWinScene");
+            if (false)
+            {
+                foreach (var ga in PhotonNetwork.PlayerList)
+                {
+                    if (PhotonNetwork.LocalPlayer.IsLocal)
+                    {
+                        Debug.Log(PhotonNetwork.LocalPlayer + "'s Haskey value: " + PlayerHasKey + "\n");
+                    }
+                    else if (PhotonNetwork.LocalPlayer.IsMasterClient)
+                    {
+                        Debug.Log(PhotonNetwork.LocalPlayer + "'s Haskey value: " +         PlayerHasKey + "\n");
+                        SceneManager.LoadScene("PlayerWinScene");
+                    }
+
+                }
+
+
+            }
 
             //Debug.Log("player get the key aand touch the door\n");
         }  

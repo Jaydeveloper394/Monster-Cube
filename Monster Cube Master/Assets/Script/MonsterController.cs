@@ -5,9 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
-
-
+using UnityEngine.SceneManagement;
 
 public class MonsterController : MonoBehaviour
 {
@@ -20,6 +18,8 @@ public class MonsterController : MonoBehaviour
 
     float energy = 10f;
 
+    public bool PlayerHasKey_All = false;
+    public bool PlayerHasKey = false;
 
     PhotonView PV;
 
@@ -64,7 +64,18 @@ public class MonsterController : MonoBehaviour
         }
         move();
         turn();
+        if (PlayerHasKey)
+        {
+            Debug.Log(PlayerHasKey + "*********\n");
+            Debug.Log(PlayerHasKey_All + "------------\n");
+
+        }
         
+
+        if (PlayerHasKey_All)
+        {
+            SceneManager.LoadScene("PlayerWinScene");
+        }
     }
     void move()
     {

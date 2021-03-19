@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 314413808788273131}
   m_Layer: 0
   m_Name: RoomManager
-  m_TagString: Untagged
+  m_TagString: RoomManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88e3701225719544adf16965959363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenceIndex: 3
   para_count: 0
   TimeLimited: 300
   playersList: []

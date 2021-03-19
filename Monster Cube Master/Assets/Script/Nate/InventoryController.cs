@@ -50,7 +50,7 @@ public class InventoryController : MonoBehaviour
            collider.isTrigger = true;
            Debug.Log("Inventory is full.");
         }
-
+        
     }
     
     public void UseItem(int itemSlot)

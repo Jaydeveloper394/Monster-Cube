@@ -16,6 +16,8 @@ TagManager:
   - Item
   - PlayerManager
   - Monster
+  - Bullet
+  - RoomManager
   layers:
   - Default
   - TransparentFX
