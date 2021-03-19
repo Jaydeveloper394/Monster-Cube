@@ -195,28 +195,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
             //prevent loading the scene every frame
             Monster_Win = false;
             SceneManager.LoadScene("MonsterWinScene");
-
-            PhotonView pv_master = GameObject.FindGameObjectWithTag("Monster").GetComponent<PhotonView>();
-            //RPC.PV();
-            Invoke("KickRoom", 3);
-
-        }
+       }
 
        if(player_Win)
        {
             //prevent loading the scene every frame
             player_Win = false;
             SceneManager.LoadScene("PlayerWinScene");
-            Invoke("KickRoom", 3);
-           
-        }
+       }
     }
-
-    public void KickRoom()
-    {
-        PhotonNetwork.LeaveRoom(true);
-    }
-
 
 
     /// <summary>
