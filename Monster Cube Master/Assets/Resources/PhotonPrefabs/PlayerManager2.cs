@@ -55,7 +55,7 @@ public class PlayerManager2 : MonoBehaviour
     void CreateController()
     {
         //Dictionary Key
-        int counter_palyerDic = 0;
+        //int counter_palyerDic = 0;
 
         if(PhotonNetwork.IsMasterClient)
         {

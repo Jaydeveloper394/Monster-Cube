@@ -24,8 +24,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     #region Win Condition Variables
     #region  private
 
-    private bool reciv_playerStatus = false;
-    private bool all_playerStatus = false;
+    //private bool reciv_playerStatus = false;
+    //private bool all_playerStatus = false;
 
     private bool GameOver = false;
 
@@ -90,7 +90,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        Checkwin();
+        //Checkwin();
     }
 
     private void FixedUpdate()
