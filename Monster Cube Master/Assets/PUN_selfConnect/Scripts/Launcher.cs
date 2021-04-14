@@ -159,7 +159,7 @@ namespace Com.uci_167.shuaw11
             }
 
             RoomOptions newRoomOptions = new RoomOptions();
-            newRoomOptions.MaxPlayers = 2;
+            newRoomOptions.MaxPlayers = 5;
             PhotonNetwork.CreateRoom(roomNameInputField.text, newRoomOptions, null);
             MenuManager.Instance.OpenMenu("loading");
         }
