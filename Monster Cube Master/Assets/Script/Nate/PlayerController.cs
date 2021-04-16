@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviourPunCallbacks
+public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     //Debug
     [SerializeField]
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     //public bool haskey =false;
      bool PlayerHasKey;
     public static bool PlayerHasKey_All;
+    public bool PlayerWin;
 
     GameObject gameManager;
 
@@ -50,6 +51,19 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     #endregion
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(PlayerWin);
+
+        }
+        else
+        {
+            this.PlayerWin = (bool)stream.ReceiveNext();
+
+        }
+    }
     void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -90,7 +104,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             return;
         }
         move();
-        if (PlayerHasKey )
+       /* if (PlayerHasKey )
         {
             Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
             foreach (Photon.Realtime.Player cct in tf)
@@ -105,6 +119,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
             }
         }
+        */
     }
     
     
@@ -187,7 +202,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (item != null)
         {
             //Debug.Log("Detect collision with Item");
-            inventory.AddItem(item);
+            if(photonView.IsMine)
+            {
+                inventory.AddItem(item);
+            }
         }
 
         if (hit.collider.tag == "Door")
@@ -199,23 +217,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (flag_key)
             {
                 //Debug.Log("Player got the key and collider with the door");
-                PlayerHasKey = true;
-                if(__NateDebug)
+                PlayerWin = true;
+                /*if(__NateDebug)
                 {
                     Debug.Log("Playerwin");
                     PhotonNetwork.LoadLevel(3);
                     SceneManager.LoadScene("PlayerWinScene");
                 }
-                
+                */
             }
 
-            if (__NateDebug)
+           /* if (__NateDebug)
             {
                 if (PhotonNetwork.LocalPlayer.IsMasterClient && PlayerHasKey)
                 {
                     Debug.LogWarning("Monster get the Player win condition \n");
                 }
             }
+            */
         }
        
 

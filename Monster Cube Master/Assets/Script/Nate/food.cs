@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class food : MonoBehaviour, IInventoryItem
 {
@@ -24,6 +25,13 @@ public class food : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        Destroy(gameObject);
+        PhotonView pv = PhotonView.Get(this);
+        pv.RPC("destroyItem", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    public void destroyItem()
+    {
+        PhotonNetwork.Destroy(gameObject);
     }
 }

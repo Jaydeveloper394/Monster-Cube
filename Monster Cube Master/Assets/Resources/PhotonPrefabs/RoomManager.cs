@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System;
 
-public class RoomManager : MonoBehaviourPunCallbacks
+public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     //Instaniates player Manager and Player Controller
     //makes sure they are automatically destroyed
@@ -41,6 +41,20 @@ public class RoomManager : MonoBehaviourPunCallbacks
     private bool __NateDebug = false;
     #endregion
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(player_Win);
+            stream.SendNext(GameOver);
+        }
+        else
+        {
+            this.player_Win = (bool)stream.ReceiveNext();
+            this.GameOver = (bool)stream.ReceiveNext();
+
+        }
+    }
     private void Awake()
     {
         if(Instance)
@@ -90,7 +104,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        //Checkwin();
+        Checkwin();
     }
 
     private void FixedUpdate()
@@ -187,6 +201,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 Monster_Win = false;
                 scenceIndex = 3;
             }
+
+            GameObject[] temp_players = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject player in temp_players)
+            {
+                if(player.GetComponent<PlayerController>().PlayerWin)
+                {
+                    Debug.Log("Players have won");
+                    GameOver = true;
+                    player_Win = true;
+                }
+            }
+            
         }
         else
         {
@@ -213,10 +239,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
        if(player_Win)
        {
-                        //prevent loading the scene every frame
+            Debug.Log("PlayersWin");
+            //prevent loading the scene every frame
             player_Win = false;
             SceneManager.LoadScene("PlayerWinScene");
             Invoke("KickRoom", 3);
+            
             //PhotonNetwork.LoadLevel(3);
 
         }
