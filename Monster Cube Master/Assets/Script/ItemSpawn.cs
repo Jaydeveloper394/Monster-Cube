@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ItemSpawn : MonoBehaviour
 {
@@ -35,17 +36,24 @@ public class ItemSpawn : MonoBehaviour
 
     private void spawnWater()
     {
-        for (int i = 0; i<waterLocations.Length; i++){
-            GameObject newWater = Instantiate(water, waterLocations[i].transform.position, Quaternion.identity);
-            newWater.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        if(PhotonNetwork.IsMasterClient)
+        { 
+            for (int i = 0; i<waterLocations.Length; i++){
+                GameObject newWater = PhotonNetwork.Instantiate("waterPrefab", waterLocations[i].transform.position, Quaternion.identity);
+                //newWater.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
         }
     }
 
     private void spawnFood()
     {
-        for (int i = 0; i<foodLocations.Length; i++){
-            GameObject newFood = Instantiate(food, foodLocations[i].transform.position, Quaternion.identity);
-            newFood.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            for (int i = 0; i < foodLocations.Length; i++)
+            {
+                GameObject newFood = PhotonNetwork.Instantiate("applePrefab", foodLocations[i].transform.position, Quaternion.identity);
+                //newFood.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
         }
     }
 }

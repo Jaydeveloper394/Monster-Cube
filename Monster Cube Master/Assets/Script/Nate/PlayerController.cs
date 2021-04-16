@@ -187,7 +187,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (item != null)
         {
             //Debug.Log("Detect collision with Item");
-            inventory.AddItem(item);
+            if(photonView.IsMine)
+            {
+                inventory.AddItem(item);
+            }
         }
 
         if (hit.collider.tag == "Door")

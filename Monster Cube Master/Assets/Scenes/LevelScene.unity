@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 405498366}
   - component: {fileID: 405498365}
   - component: {fileID: 405498364}
+  - component: {fileID: 405498367}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -373,6 +374,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405498367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405498363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &536138909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +1985,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800003491}
     m_Modifications:
+    - target: {fileID: 307362018618946516, guid: 30bf59a54211b48b7b97de9a31777397,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2798951521963522408, guid: 30bf59a54211b48b7b97de9a31777397,
         type: 3}
       propertyPath: m_Name
@@ -2515,6 +2543,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1800003491}
     m_Modifications:
+    - target: {fileID: 851130620796732655, guid: d81c52d31964d44e496a0cb8067282fe,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7453787913028934050, guid: d81c52d31964d44e496a0cb8067282fe,
         type: 3}
       propertyPath: m_Name

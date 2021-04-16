@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class water : MonoBehaviour, IInventoryItem
 {
@@ -25,6 +26,13 @@ public class water : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        gameObject.SetActive(false);
+        PhotonView pv = PhotonView.Get(this);
+        pv.RPC("destroyItem", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    public void destroyItem()
+    {
+        PhotonNetwork.Destroy(gameObject);
     }
 }
