@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   __NateDebug: 0
   flag_key: 0
+  PlayerWin: 0
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 8380808256166915516}
   speed: 9
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   __NateDebug: 0
   flag_key: 0
+  PlayerWin: 0
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 0}
   speed: 8
