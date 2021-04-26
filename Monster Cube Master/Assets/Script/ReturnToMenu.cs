@@ -7,7 +7,8 @@ public class ReturnToMenu : MonoBehaviour
 {
     public void loadMenuScene()
     {
-        SceneManager.LoadScene("self_multiplyplayer");
+        //make sure 0 is lobby scene, or change accordingly
+        SceneManager.LoadScene(0);
     }
 
     public void quitApplication()
