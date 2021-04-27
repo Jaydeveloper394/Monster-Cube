@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using ExitGames.Client.Photon.StructWrapping;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class StatusDecrease : PlayerController
 {
@@ -13,11 +15,14 @@ public class StatusDecrease : PlayerController
     public float healthDropRate;
     public float thirstDropRate;
     public float hungerDropRate;
+   
+    
     
     private Vector3 respawnPosition;
     
     private bool thirstIsDropping;
     private bool hungerIsDropping;
+    
     
     private int deathCount;
 
@@ -118,6 +123,6 @@ public class StatusDecrease : PlayerController
             gameObject.GetComponent<CharacterController>().enabled = false;
             gameObject.GetComponent<CapsuleCollider>().enabled = true;
         }
-        
+       
     }
 }
