@@ -9,6 +9,8 @@ public class InventoryController : MonoBehaviour
     public Slider healthSlider;
     public Slider thirstSlider;
     public Slider hungerSlider;
+
+    private bool mouseClicked;
    
     #region  IInventory define
     private const int SLOTS = 6;
@@ -36,7 +38,7 @@ public class InventoryController : MonoBehaviour
         {
             Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
             
-            if(collider.enabled)
+            if(collider.enabled && mouseClicked)
             {
                 collider.enabled = false;
                 
@@ -142,7 +144,7 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(1);
+             //DropItem(1);
           }
           else
           {
@@ -154,7 +156,7 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(2);
+             //DropItem(2);
           }
           else
           {
@@ -166,7 +168,7 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(3);
+             //DropItem(3);
           }
           else
           {
@@ -178,7 +180,7 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(4);
+             //DropItem(4);
           }
           else
           {
@@ -190,7 +192,7 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(5);
+             //DropItem(5);
           }
           else
           {
@@ -202,12 +204,21 @@ public class InventoryController : MonoBehaviour
        {
           if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
           {
-             DropItem(6);
+             //DropItem(6);
           }
           else
           {
              UseItem(6);
           }
+       }
+
+       if(Input.GetMouseButtonDown(0))
+       {
+           mouseClicked = true;
+       }
+       else
+       {
+           mouseClicked = false;
        }
     }
 }
