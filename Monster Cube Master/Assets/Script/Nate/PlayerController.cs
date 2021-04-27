@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     public Light flashlight;
     private bool flashOn;
+    public Slider batterylife;
+    public float batteryDropRate;
+    private bool flashlightdied = false;
+    private bool is_flickering = false;
 
     #endregion
 
@@ -104,24 +110,70 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
         move();
-       /* if (PlayerHasKey )
-        {
-            Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
-            foreach (Photon.Realtime.Player cct in tf)
-            {
-                PV.RPC("Get_PlayerHasKeyANDTouchDoor", cct);
-                
-            }
-            
+        /* if (PlayerHasKey )
+         {
+             Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
+             foreach (Photon.Realtime.Player cct in tf)
+             {
+                 PV.RPC("Get_PlayerHasKeyANDTouchDoor", cct);
 
-            if (__NateDebug)
+             }
+
+
+             if (__NateDebug)
+             {
+                 Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
+             }
+         }
+         */
+        
+        if (flashlightdied == false && batterylife.value >= 0)
+        {
+            Debug.Log(batterylife.value + ": batterylife");
+            if (flashOn)
             {
-                Debug.Log(PhotonNetwork.LocalPlayer.UserId + "'s Haskey value: " + PlayerHasKey + "\n");
+                Debug.Log("Is Decreasing");
+                batterylife.value -= (batteryDropRate * Time.deltaTime);
             }
         }
-        */
+        if (flashlightdied == false && batterylife.value <= 20 && batterylife.value >= 18)
+        {
+            Debug.Log("Battery Low");
+            StartCoroutine(FlickerLight());
+
+          
+        }
+        if (flashlightdied == false && batterylife.value <= 10 && batterylife.value >= 1)
+        {
+            Debug.Log("Battery Low");
+            StartCoroutine(FlickerLight());
+
+            
+        }
+        if (flashlightdied == false && batterylife.value <= 0)
+        {
+            Debug.Log("Battery out");
+            flashlight.enabled = false;
+            flashlightdied = true;
+        }
+        if(flashlightdied && batterylife.value > 0)
+        {
+            Debug.Log("Flashlight has power");
+            flashlight.enabled = true;
+            flashOn = true;
+            flashlightdied = false;
+        }
     }
     
+    IEnumerator FlickerLight()
+    {
+        flashlight.enabled = false;
+        float timeDelay = Random.Range(.01f, .05f);
+        yield return new WaitForSeconds(timeDelay);
+        flashlight.enabled = true;
+        timeDelay = Random.Range(.01f, .05f);
+        yield return new WaitForSeconds(timeDelay);
+    }
     
     void move()
     {
@@ -141,8 +193,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                     flashOn = false;
                 }
                 else{
-                    flashlight.enabled = true;
-                    flashOn = true;
+                    if (flashlightdied == false)
+                    {
+                        flashlight.enabled = true;
+                        flashOn = true;
+                    }
                 }
                 //movedirection.y += jumpSpeed;
             }
