@@ -104,7 +104,7 @@ public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
 
-        Checkwin();
+        //Checkwin();
     }
 
     private void FixedUpdate()
