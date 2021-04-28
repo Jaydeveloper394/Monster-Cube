@@ -1786,6 +1786,7 @@ MonoBehaviour:
   healthSlider: {fileID: 2986454140812367823}
   thirstSlider: {fileID: 2986454141086072414}
   hungerSlider: {fileID: 2986454139423881187}
+  batterySlider: {fileID: 0}
 --- !u!114 &2986454140479084920
 MonoBehaviour:
   m_ObjectHideFlags: 0
