@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,13 @@ public class key : MonoBehaviour, IInventoryItem
 
     public void OnPickUp()
     {
-        Destroy(gameObject);
+        PhotonView pv = PhotonView.Get(this);
+        pv.RPC("destroyItem", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    public void destroyItem()
+    {
+        PhotonNetwork.Destroy(gameObject);
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class NearItemGlow : MonoBehaviour
 {
-    public GameObject playertestPrefab;
-
     private Vector3 targetDirection;
 
     Behaviour halo;
@@ -23,23 +21,18 @@ public class NearItemGlow : MonoBehaviour
         //displayText += "";
     }
 
-    void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        glowNearPlayer();
-    }
-
-    private void glowNearPlayer()
-    {
-        playertestPrefab = GameObject.Find("PlayerTest(Clone)");
-
-        targetDirection = playertestPrefab.transform.position - transform.position;
-        //Debug.Log("Distance to player: " + targetDirection.magnitude);
-
-        if(targetDirection.magnitude < 20.0f)
+        if(other.gameObject.CompareTag("Player"))
         {
             halo.enabled = true;
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
         {
             halo.enabled = false;
         }
