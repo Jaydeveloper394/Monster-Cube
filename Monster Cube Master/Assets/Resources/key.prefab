@@ -197,6 +197,8 @@ GameObject:
   - component: {fileID: 6275405004558016329}
   - component: {fileID: 6275405004558016328}
   - component: {fileID: -1169086553335562306}
+  - component: {fileID: 5430720056752910431}
+  - component: {fileID: -7157797394120464014}
   m_Layer: 0
   m_Name: key
   m_TagString: Item
@@ -314,10 +316,37 @@ MonoBehaviour:
   observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!122 &5430720056752910431
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618002593336435231}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255360
+  m_Size: 0.6
+--- !u!114 &-7157797394120464014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618002593336435231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playertestPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
+    type: 3}
 --- !u!1 &7161546979748803373
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7759778353216595190}
   - component: {fileID: 7759778353216595189}
   - component: {fileID: 851130620796732655}
+  - component: {fileID: 5576480837191414253}
+  - component: {fileID: -3558779416269909326}
   m_Layer: 0
   m_Name: waterPrefab
   m_TagString: Item
@@ -130,3 +132,29 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!122 &5576480837191414253
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453787913028934050}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294901760
+  m_Size: 0.85
+--- !u!114 &-3558779416269909326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453787913028934050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playertestPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
+    type: 3}
