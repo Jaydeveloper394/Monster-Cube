@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3032811808934167614}
   - component: {fileID: 3032811808934167615}
   - component: {fileID: 307362018618946516}
+  - component: {fileID: 1483211191268721177}
+  - component: {fileID: 6762027119132917784}
   m_Layer: 0
   m_Name: applePrefab
   m_TagString: Item
@@ -130,3 +132,29 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!122 &1483211191268721177
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798951521963522408}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 0.8
+--- !u!114 &6762027119132917784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798951521963522408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playertestPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
+    type: 3}
