@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,8 +37,7 @@ public class KeySpawn : MonoBehaviour
                 continue;
             }
             else{
-                GameObject newKey = Instantiate(key, keyLocations[spawn].transform.position, Quaternion.identity);
-                newKey.transform.localScale = new Vector3(0.10159f, 0.10159f, 0.10159f);
+                GameObject newKey = PhotonNetwork.Instantiate("waterPrefab", keyLocations[spawn].transform.position, Quaternion.identity);
                 keys[spawn] = true;
                 count +=1;
             }

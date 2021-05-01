@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         //if inventory is full, make item obtainable again
         if (other.tag == "Item")
         {
-            other.isTrigger = false;
+            //other.isTrigger = false;
         }
     }
 
