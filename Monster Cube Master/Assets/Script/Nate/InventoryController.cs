@@ -9,6 +9,7 @@ public class InventoryController : MonoBehaviour
     public Slider healthSlider;
     public Slider thirstSlider;
     public Slider hungerSlider;
+    public Slider batterySlider;
 
     private bool mouseClicked;
    
@@ -89,6 +90,18 @@ public class InventoryController : MonoBehaviour
                 thirstSlider.value = thirstSlider.maxValue;
              }
           }
+
+            if (itemName == "battery")
+            {
+                Debug.Log("Using item: " + itemName);
+                //recover battery
+                batterySlider.value += 35;
+                if (batterySlider.value > batterySlider.maxValue)
+                {
+                    batterySlider.value = batterySlider.maxValue;
+                }
+            }
+
           
           if(itemName != "key")
           {

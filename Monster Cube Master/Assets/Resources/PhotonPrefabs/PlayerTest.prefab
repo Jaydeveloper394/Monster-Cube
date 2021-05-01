@@ -659,7 +659,7 @@ MonoBehaviour:
   inventory: {fileID: 8813779404641625327}
   flashlight: {fileID: 8380808256166915516}
   batterylife: {fileID: 3498633947740355314}
-  batteryDropRate: 10
+  batteryDropRate: 1
   speed: 9
 --- !u!114 &8380808256488477577
 MonoBehaviour:
