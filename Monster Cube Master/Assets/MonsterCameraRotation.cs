@@ -34,7 +34,15 @@ public class MonsterCameraRotation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            cursorLocked = !cursorLocked;
+            if(cursorLocked)
+            {
+               cursorLocked = false;
+            }
+            else
+            {
+                cursorLocked = true;
+            }
+            
         }
     }
 
@@ -84,7 +92,7 @@ public class MonsterCameraRotation : MonoBehaviour
 
         Player.rotation = Quaternion.Euler(Vector3.Scale(rotPlayer, new Vector3(0,1,0)));
         //Player.rotation = Quaternion.Euler(rotPlayer);
-        Camera.rotation = Quaternion.Euler(Vector3.Scale(rotPlayer, new Vector3(1, 1, 0)));
+        //Camera.rotation = Quaternion.Euler(rotPlayer);
         //PlayerArms.rotation = Quaternion.Euler(rotArms);
     }
 }

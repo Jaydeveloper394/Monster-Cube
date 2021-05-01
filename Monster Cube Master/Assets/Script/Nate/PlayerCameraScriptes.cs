@@ -30,9 +30,17 @@ public class PlayerCameraScriptes : MonoBehaviour
     
     private void DetectEscape()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-           cursorLocked = !cursorLocked;
+            if (cursorLocked)
+            {
+                cursorLocked = false;
+            }
+            else
+            {
+                cursorLocked = true;
+            }
+
         }
     }
     
