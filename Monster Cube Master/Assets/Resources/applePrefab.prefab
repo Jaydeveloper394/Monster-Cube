@@ -157,8 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playertestPrefab: {fileID: 8380808256488477583, guid: f49dc434098221946a9e47dae471a548,
-    type: 3}
 --- !u!135 &-7371014063445018
 SphereCollider:
   m_ObjectHideFlags: 0
