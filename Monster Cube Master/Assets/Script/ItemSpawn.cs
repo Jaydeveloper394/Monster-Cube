@@ -51,7 +51,7 @@ public class ItemSpawn : MonoBehaviour
         {
             for (int i = 0; i < foodLocations.Length; i++)
             {
-                GameObject newFood = PhotonNetwork.Instantiate("applePrefab", foodLocations[i].transform.position, Quaternion.identity);
+                GameObject newFood = PhotonNetwork.Instantiate("battery", foodLocations[i].transform.position, Quaternion.identity);
                 //newFood.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
         }
