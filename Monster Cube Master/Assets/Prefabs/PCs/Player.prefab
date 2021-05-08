@@ -79,8 +79,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d400cf6abde784e959cf178f5954ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __NateDebug: 1
+  flag_key: 0
+  PlayerWin: 0
   inventory: {fileID: 0}
   flashlight: {fileID: 4081851710869981646}
+  batterylife: {fileID: 0}
+  batteryDropRate: 0
   speed: 50
 --- !u!114 &8869648145923139331
 MonoBehaviour:
@@ -94,12 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f53f9b9e2d84ed40803f0cc2c23849e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  __NateDebug: 1
+  flag_key: 0
+  PlayerWin: 0
+  inventory: {fileID: 0}
+  flashlight: {fileID: 0}
+  batterylife: {fileID: 0}
+  batteryDropRate: 0
+  speed: 8
   healthSlider: {fileID: 0}
   thirstSlider: {fileID: 0}
   hungerSlider: {fileID: 0}
   healthDropRate: 0.25
   thirstDropRate: 16
   hungerDropRate: 16
+  isparalyzed: 0
 --- !u!1 &8091176261131779209
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,8 +156,8 @@ Camera:
   m_GameObject: {fileID: 8091176261131779209}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
