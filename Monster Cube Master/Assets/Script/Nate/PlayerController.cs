@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     GameObject gameManager;
 
+    GameObject interactionObject = null;
+
     #region Inventory Controller Variable Define
 
     public InventoryController inventory;
@@ -110,6 +112,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
         move();
+        if(Input.GetMouseButtonDown(0))
+        {
+            Interact();
+        }
+
         /* if (PlayerHasKey )
          {
              Photon.Realtime.Player[] tf = PhotonNetwork.PlayerList;
@@ -129,36 +136,36 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         
         if (flashlightdied == false && batterylife.value >= 0)
         {
-            Debug.Log(batterylife.value + ": batterylife");
+            //Debug.Log(batterylife.value + ": batterylife");
             if (flashOn)
             {
-                Debug.Log("Is Decreasing");
+                //Debug.Log("Is Decreasing");
                 batterylife.value -= (batteryDropRate * Time.deltaTime);
             }
         }
         if (flashlightdied == false && batterylife.value <= 20 && batterylife.value >= 18)
         {
-            Debug.Log("Battery Low");
+            //Debug.Log("Battery Low");
             StartCoroutine(FlickerLight());
 
           
         }
         if (flashlightdied == false && batterylife.value <= 10 && batterylife.value >= 1)
         {
-            Debug.Log("Battery Low");
+            //Debug.Log("Battery Low");
             StartCoroutine(FlickerLight());
 
             
         }
         if (flashlightdied == false && batterylife.value <= 0)
         {
-            Debug.Log("Battery out");
+            //Debug.Log("Battery out");
             flashlight.enabled = false;
             flashlightdied = true;
         }
         if(flashlightdied && batterylife.value > 0)
         {
-            Debug.Log("Flashlight has power");
+           // Debug.Log("Flashlight has power");
             flashlight.enabled = true;
             flashOn = true;
             flashlightdied = false;
@@ -241,14 +248,68 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void OnTriggerExit(Collider other)
     {
-        //if inventory is full, make item obtainable again
+        //when leaving the collider item no longer interactable
+        if(other.gameObject == interactionObject)
+        {
+            interactionObject.GetComponent<NearItemGlow>().DisableHalo();
+            interactionObject = null;
+            Debug.Log(interactionObject);
+        }
+        
+        /*//if inventory is full, make item obtainable again
         if (other.tag == "Item")
         {
             //other.isTrigger = false;
+        }*/
+    }
+
+    
+    //this is interacting with any object
+    //gotta check what tag the object has
+    //if item, do the pick up code
+    //if other object, interact with object
+    //if other player, unfreeze player
+    private void OnTriggerEnter(Collider other)
+    {
+       //replace interaction object with the thing you've collided with
+        if(other.gameObject.tag == "Object" || other.gameObject.tag == "Item" || other.gameObject.tag == "Player")
+        {
+            if(interactionObject != null)
+            {
+                interactionObject.GetComponent<NearItemGlow>().DisableHalo();
+            }
+            interactionObject = other.gameObject;
+            interactionObject.GetComponent<NearItemGlow>().EnableHalo();
+
+            Debug.Log(interactionObject.name);
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void Interact()
+    {
+        if(interactionObject == null)
+        {
+            Debug.Log("interaction null");
+            return;
+        }
+        else if (interactionObject.tag == "Item")
+        {
+            IInventoryItem item = interactionObject.GetComponent<IInventoryItem>();
+            if (item != null)
+            {
+                Debug.Log("item exists");
+                //Debug.Log("Detect collision with Item");
+                if (photonView.IsMine)
+                {
+                    inventory.AddItem(item);
+                    Debug.Log("Item added!");
+                }
+            }
+        }
+
+    }
+    
+    /*private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
         
@@ -280,7 +341,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                     SceneManager.LoadScene("PlayerWinScene");
                 }
                 */
-            }
+            //}
 
            /* if (__NateDebug)
             {
@@ -289,11 +350,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                     Debug.LogWarning("Monster get the Player win condition \n");
                 }
             }
-            */
+            
         }
        
 
-    }
+    }*/
 
     /// <summary>
     ///     Return the player's status : if player down?  return true : false;
@@ -346,7 +407,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     }
 
    
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (__NateDebug)
         {
@@ -369,7 +430,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
             }
         }
-    }
+    }*/
 
 
 

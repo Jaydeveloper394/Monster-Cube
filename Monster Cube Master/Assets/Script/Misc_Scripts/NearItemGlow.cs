@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NearItemGlow : MonoBehaviour
 {
-    private Vector3 targetDirection;
+    //private Vector3 targetDirection;
 
     Behaviour halo;
 
@@ -22,20 +22,18 @@ public class NearItemGlow : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public void EnableHalo()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            halo.enabled = true;
-        }
+       
+        halo.enabled = true;
+        
     }
 
-    private void OnTriggerExit(Collider other)
+    public void DisableHalo()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            halo.enabled = false;
-        }
+       
+        halo.enabled = false;
+        
     }
 
     //void OnGUI()

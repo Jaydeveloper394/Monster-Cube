@@ -37,26 +37,17 @@ public class InventoryController : MonoBehaviour
 
         if (mItems.Count < SLOTS)
         {
-            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-            
-            if(collider.enabled && mouseClicked)
-            {
-                collider.enabled = false;
-                
-                mItems.Add(item);
-              
-                item.OnPickUp();
+            mItems.Add(item);
 
-                if(ItemAdded != null)
-                {
-                    ItemAdded(this, new InventoryEventArgs(item));
-                }
+            item.OnPickUp();
+
+            if (ItemAdded != null)
+            {
+                ItemAdded(this, new InventoryEventArgs(item));
             }
         }
         else
         {
-           Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-           collider.isTrigger = true;
            Debug.Log("Inventory is full.");
         }
         
