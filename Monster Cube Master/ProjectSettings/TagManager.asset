@@ -18,6 +18,7 @@ TagManager:
   - Monster
   - Bullet
   - RoomManager
+  - Object
   layers:
   - Default
   - TransparentFX
