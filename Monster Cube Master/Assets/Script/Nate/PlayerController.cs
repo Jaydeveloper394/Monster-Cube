@@ -64,11 +64,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(PlayerWin);
+            stream.SendNext(flashlight.enabled);
 
         }
         else
         {
             this.PlayerWin = (bool)stream.ReceiveNext();
+            this.flashlight.enabled = (bool)stream.ReceiveNext();
 
         }
     }
