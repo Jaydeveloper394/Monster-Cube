@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
         move();
+        FlashlightToggle();
         if(Input.GetMouseButtonDown(0))
         {
             Interact();
@@ -206,6 +207,28 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         timeDelay = Random.Range(.01f, .05f);
         yield return new WaitForSeconds(timeDelay);
     }
+
+
+    private void FlashlightToggle()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (flashOn)
+            {
+                flashlight.enabled = false;
+                flashOn = false;
+            }
+            else
+            {
+                if (flashlightdied == false)
+                {
+                    flashlight.enabled = true;
+                    flashOn = true;
+                }
+            }
+            //movedirection.y += jumpSpeed;
+        }
+    }
     
     /// <summary>
     /// move
@@ -220,22 +243,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             movedirection = new Vector3(moveX, 0, moveZ);
             movedirection = transform.TransformDirection(movedirection);
 
-            
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                if (flashOn){
-                    flashlight.enabled = false;
-                    flashOn = false;
-                }
-                else{
-                    if (flashlightdied == false)
-                    {
-                        flashlight.enabled = true;
-                        flashOn = true;
-                    }
-                }
-                //movedirection.y += jumpSpeed;
-            }
 
             if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
             {
