@@ -38,7 +38,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     public float batteryDropRate;
     private bool flashlightdied = false;
     private bool is_flickering = false;
-
+    public float time_delay = 2;
+    private float time_inc = 0;
+    private bool trail_start = false;
     #endregion
 
 
@@ -65,12 +67,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(PlayerWin);
             stream.SendNext(flashlight.enabled);
+            TrailRenderer trail = GetComponent<TrailRenderer>();
+            stream.SendNext(trail.enabled);
 
         }
         else
         {
             this.PlayerWin = (bool)stream.ReceiveNext();
             this.flashlight.enabled = (bool)stream.ReceiveNext();
+            TrailRenderer trail = GetComponent<TrailRenderer>();
+            trail.enabled = (bool)stream.ReceiveNext();
 
         }
     }
@@ -118,6 +124,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             Interact();
         }
+        if(time_inc > time_delay && trail_start == false)
+        {
+            TrailRenderer trail = GetComponent<TrailRenderer>();
+            trail.enabled = true;
+            trail_start = true;
+            
+        }
+        time_inc += Time.deltaTime;
 
         /* if (PlayerHasKey )
          {
