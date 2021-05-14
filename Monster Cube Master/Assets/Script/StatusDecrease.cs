@@ -8,48 +8,18 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class StatusDecrease : PlayerController
 {
+    //freeze function
+        // disables controller and other stuff
+    //unfreeze function -> both public 
     public Slider healthSlider;
-    public Slider thirstSlider;
-    public Slider hungerSlider;
-    
     public float healthDropRate;
-    public float thirstDropRate;
-    public float hungerDropRate;
    
-    
-    
     private Vector3 respawnPosition;
-    
-    private bool thirstIsDropping;
-    private bool hungerIsDropping;
-    
     
     private int deathCount;
 
     public bool isparalyzed;
 
-    public bool Get_isparalyzed()
-    {
-        return isparalyzed;
-    }
-
-    public void Set_isParalyzed(bool newisparalyzed)
-    {
-        isparalyzed = newisparalyzed;
-    }
-
-
-    public void decreaseThirst()
-    {
-       thirstIsDropping = true;
-       StartCoroutine(DecreaseSlider(thirstSlider, thirstDropRate));
-    }
-    
-    public void decreaseHunger()
-    {
-       hungerIsDropping = true;
-       StartCoroutine(DecreaseSlider(hungerSlider, hungerDropRate));
-    }
     
     IEnumerator DecreaseSlider(Slider slider, float dropRate)
      {
@@ -73,56 +43,43 @@ public class StatusDecrease : PlayerController
    
     void Start()
     {
-        hungerIsDropping = true;
-        decreaseHunger();
-        
-        thirstIsDropping = true;
-        decreaseThirst();
-        
         respawnPosition = transform.position;
     }
 
     void Update()
-    {
-        if(thirstSlider.value <= 0)
-        {
-           thirstIsDropping = false;
-           float dropValue = (healthSlider.maxValue * healthDropRate * Time.deltaTime / 36);
-           healthSlider.value -= dropValue;
-        }
-        
-        //if both thirst and hunger are 0, health drops at double the speed
-        if(hungerSlider.value <= 0)
-        {
-           hungerIsDropping = false;
-           float dropValue = (healthSlider.maxValue * healthDropRate * Time.deltaTime / 36);
-           healthSlider.value -= dropValue;
-        }
-        
-        //after regaining thirst / hunger from an item, continue dropping
-        if(!thirstIsDropping && thirstSlider.value > 0)
-        {
-           decreaseThirst();
-        }
-        
-        if(!hungerIsDropping && hungerSlider.value > 0)
-        {
-           decreaseHunger();
-        }
-        
+    { 
        if(healthSlider.value <= 0)
        {
-           deathCount++;
-           Debug.Log("Player health dropped to 0. Death Count: " + deathCount);
-           //transform.position = respawnPosition;
-           healthSlider.value = healthSlider.maxValue;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            isparalyzed = true;
-            //paralyze_count++;
-            gameObject.GetComponent<CharacterController>().enabled = false;
-            gameObject.GetComponent<CapsuleCollider>().enabled = true;
+            FreezePlayer();
+           
         }
        
     }
+
+    private void FreezePlayer()
+    {
+        deathCount++;
+        Debug.Log("Player health dropped to 0. Death Count: " + deathCount);
+       
+        //healthSlider.value = healthSlider.maxValue;
+        
+
+        isparalyzed = true;
+      
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void UnfreezePlayer()
+    {
+        healthSlider.value = healthSlider.maxValue;
+        isparalyzed = false;
+
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.GetComponent<CharacterController>().enabled = true;
+        
+
+    }
+
+    
 }

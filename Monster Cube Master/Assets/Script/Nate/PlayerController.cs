@@ -135,7 +135,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
              }
          }
          */
-        
+        FlashlightMechanic();
+       
+    }
+
+
+    /// <summary>
+    /// FLASHLIGHT STUFF
+    /// </summary>
+    private void FlashlightMechanic()
+    {
         if (flashlightdied == false && batterylife.value >= 0)
         {
             //Debug.Log(batterylife.value + ": batterylife");
@@ -150,14 +159,14 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             //Debug.Log("Battery Low");
             StartCoroutine(FlickerLight());
 
-          
+
         }
         if (flashlightdied == false && batterylife.value <= 10 && batterylife.value >= 1)
         {
             //Debug.Log("Battery Low");
             StartCoroutine(FlickerLight());
 
-            
+
         }
         if (flashlightdied == false && batterylife.value <= 0)
         {
@@ -165,9 +174,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             flashlight.enabled = false;
             flashlightdied = true;
         }
-        if(flashlightdied && batterylife.value > 0)
+        if (flashlightdied && batterylife.value > 0)
         {
-           // Debug.Log("Flashlight has power");
+            // Debug.Log("Flashlight has power");
             flashlight.enabled = true;
             flashOn = true;
             flashlightdied = false;
@@ -184,6 +193,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(timeDelay);
     }
     
+    /// <summary>
+    /// move
+    /// </summary>
     void move()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -308,6 +320,19 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                 }
             }
         }
+        else if(interactionObject.tag == "Player")
+        {
+            //put the player stuff in here!
+            StatusDecrease status = interactionObject.GetComponent<StatusDecrease>();
+            if(CheckPlayerParalyzed(status))
+            {
+                status.UnfreezePlayer();
+            }
+        }
+        else if(interactionObject.tag == "Object")
+        {
+            //interactionObject.interact();
+        }
 
     }
     
@@ -364,11 +389,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     /// <param name="player"></param>  The parameter need to be a gameobject
     /// <returns></returns>  eturn a bool = true, if the player  is down
 
-    public bool CheckPlayerParalyzed(GameObject player)
+    public bool CheckPlayerParalyzed(StatusDecrease status)
     {
-
-        Debug.LogWarning("The function didn't finished yet.");
-        return false;
+       return status.isparalyzed;
     }
 
     /// <summary>
