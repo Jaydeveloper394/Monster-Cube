@@ -12,6 +12,7 @@ public class InventoryController : MonoBehaviour
     public Slider batterySlider;
 
     private bool mouseClicked;
+    private GameObject MapImage;
    
     #region  IInventory define
     private const int SLOTS = 6;
@@ -22,6 +23,12 @@ public class InventoryController : MonoBehaviour
     public event EventHandler<InventoryEventArgs> ItemRemoved;
 
     #endregion
+
+    private void Start()
+    {
+        MapImage = GameObject.Find("MapImage");
+        MapImage.SetActive(false);
+    }
 
     /// <summary>
     /// AddItem  -  collect the Item into the inventory
@@ -93,8 +100,15 @@ public class InventoryController : MonoBehaviour
                 }
             }
 
-          
-          if(itemName != "key")
+            if (itemName == "map")
+            {
+                Debug.Log("Using item: " + itemName);
+                //disable map placeholder and enable actual map image
+                GameObject.Find("MapPlaceholder").SetActive(false);
+                MapImage.SetActive(true);
+            }
+
+            if (itemName != "key")
           {
              //delete item from list if not key
              mItems.RemoveAt(itemSlot - 1);
