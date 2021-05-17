@@ -26,8 +26,7 @@ public class InventoryController : MonoBehaviour
 
     private void Start()
     {
-        MapImage = GameObject.Find("MapImage");
-        MapImage.SetActive(false);
+
     }
 
     /// <summary>
@@ -105,6 +104,8 @@ public class InventoryController : MonoBehaviour
                 Debug.Log("Using item: " + itemName);
                 //disable map placeholder and enable actual map image
                 GameObject.Find("MapPlaceholder").SetActive(false);
+
+                MapImage = GameObject.Find("MapImage");
                 MapImage.SetActive(true);
             }
 

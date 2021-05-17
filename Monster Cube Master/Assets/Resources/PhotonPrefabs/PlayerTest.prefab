@@ -293,15 +293,15 @@ RectTransform:
   m_GameObject: {fileID: 2694211327537734857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 8813779404546589668}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 67, y: -100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 340, y: -233}
+  m_SizeDelta: {x: 4031.9998, y: 3024}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7357999622604088202
 CanvasRenderer:
@@ -324,13 +324,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d51977b719892041a8724ba64c75ba2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85fe717d45e7c7c4496d4d95595b7c95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652087443357618559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 1373984472603413818}
   - component: {fileID: 651781220089366303}
   - component: {fileID: -1753014419139216530}
+  - component: {fileID: 2481070267854337938}
   m_Layer: 8
   m_Name: PlayerTest
   m_TagString: Player
@@ -999,6 +1000,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &2481070267854337938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8380808256488477583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b64176b45ea16d47a635dc096cd8258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8380808257340451473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
-  startTime: 300
+  startTime: 999
   timerText: {fileID: 2556177378605380999}
 --- !u!1001 &5990580922486979990
 PrefabInstance:
