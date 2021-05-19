@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(PlayerWin);
             stream.SendNext(flashlight.enabled);
-            TrailRenderer trail = GetComponent<TrailRenderer>();
+            TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
             stream.SendNext(trail.enabled);
 
         }
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             this.PlayerWin = (bool)stream.ReceiveNext();
             this.flashlight.enabled = (bool)stream.ReceiveNext();
-            TrailRenderer trail = GetComponent<TrailRenderer>();
+            TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
             trail.enabled = (bool)stream.ReceiveNext();
 
         }
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         if(time_inc > time_delay && trail_start == false)
         {
-            TrailRenderer trail = GetComponent<TrailRenderer>();
+            TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
             trail.enabled = true;
             trail_start = true;
             
