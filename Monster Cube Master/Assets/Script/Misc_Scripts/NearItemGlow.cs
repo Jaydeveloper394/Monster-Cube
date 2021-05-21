@@ -2,18 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class NearItemGlow : MonoBehaviour
+public class NearItemGlow : MonoBehaviourPunCallbacks, IPunObservable
 {
     //private Vector3 targetDirection;
 
     Behaviour halo;
 
+    PhotonView PV;
+
     //private int boxWidth = 240;
     //private int boxHeight = 240;
 
     //private string displayText;
-    void Start()
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(halo.enabled);
+        }
+        else
+        {
+            // Network player, receive data
+            this.halo.enabled = (bool)stream.ReceiveNext();
+        }
+    }
+        void Start()
     {
         halo = (Behaviour)gameObject.GetComponent("Halo");
         halo.enabled = false;

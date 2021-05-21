@@ -306,17 +306,23 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     //if other player, unfreeze player
     private void OnTriggerEnter(Collider other)
     {
-       //replace interaction object with the thing you've collided with
-        if(other.gameObject.tag == "Object" || other.gameObject.tag == "Item" || other.gameObject.tag == "Player")
+        //replace interaction object with the thing you've collided with
+        if (photonView.IsMine)
         {
-            if(interactionObject != null)
+            if (other.gameObject.tag == "Object" || other.gameObject.tag == "Item" || other.gameObject.tag == "Player")
             {
-                interactionObject.GetComponent<NearItemGlow>().DisableHalo();
-            }
-            interactionObject = other.gameObject;
-            interactionObject.GetComponent<NearItemGlow>().EnableHalo();
 
-            Debug.Log(interactionObject.name);
+                Debug.Log("name: " + other.name);
+                if (interactionObject != null)
+                {
+                    interactionObject.GetComponent<NearItemGlow>().DisableHalo();
+                }
+                interactionObject = other.gameObject;
+                interactionObject.GetComponent<NearItemGlow>().EnableHalo();
+
+                Debug.Log("interactin name: " + interactionObject.name);
+
+            }
         }
     }
 
