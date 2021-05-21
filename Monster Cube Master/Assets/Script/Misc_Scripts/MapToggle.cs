@@ -5,36 +5,96 @@ using Photon.Pun;
 
 public class MapToggle : MonoBehaviour
 {
-    private bool mapEnabled;
-    private GameObject MapImage;
+    private bool mazeEnabled;
+    private bool forestEnabled;
+    private bool laboratoryEnabled;
+
+    public GameObject mazeImage;
+    public GameObject forestImage;
+    public GameObject laboratoryImage;
 
     PhotonView PV;
 
-    // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
 
-        mapEnabled = false;
-        MapImage = GameObject.Find("MapImage");
-        MapImage.SetActive(false);
+        mazeEnabled = false;
+        forestEnabled = false;
+        laboratoryEnabled = false;
+
+        mazeImage.SetActive(false);
+        forestImage.SetActive(false);
+        laboratoryImage.SetActive(false);
     }
 
     void Update()
     {
+        checkMaze();
+        checkForest();
+        checkLaboratory();
+
+        checkClearAllMaps();
+    }
+
+    void checkMaze()
+    {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            mapEnabled = !mapEnabled;
+            mazeEnabled = !mazeEnabled;
         }
 
-        if(mapEnabled && PV.IsMine)
+        if (mazeEnabled && PV.IsMine)
         {
-            MapImage.SetActive(true);
+            mazeImage.SetActive(true);
         }
         else
         {
-            MapImage.SetActive(false);
+            mazeImage.SetActive(false);
+        }
+    }
+
+    void checkForest()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            forestEnabled = !forestEnabled;
         }
 
+        if (forestEnabled && PV.IsMine)
+        {
+            forestImage.SetActive(true);
+        }
+        else
+        {
+            forestImage.SetActive(false);
+        }
+    }
+
+    void checkLaboratory()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            laboratoryEnabled = !laboratoryEnabled;
+        }
+
+        if (laboratoryEnabled && PV.IsMine)
+        {
+            laboratoryImage.SetActive(true);
+        }
+        else
+        {
+            laboratoryImage.SetActive(false);
+        }
+    }
+
+    void checkClearAllMaps()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            mazeEnabled = false;
+            forestEnabled = false;
+            laboratoryEnabled = false;
+        }
     }
 }
