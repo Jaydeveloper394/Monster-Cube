@@ -5,10 +5,10 @@ using Photon.Pun;
 
 public class PlayerInfo : MonoBehaviour
 {
-    private int boxWidth = 240;
-    private int boxHeight = 240;
+    public int boxWidth = 240;
+    public int boxHeight = 325;
 
-    private string displayText;
+    public string displayText;
     private bool GUIenabled;
 
     PhotonView PV;
@@ -32,8 +32,14 @@ public class PlayerInfo : MonoBehaviour
         displayText += "Turn Camera - Move Mouse\n";
         displayText += "Unbind/Rebind Mouse Cursor - esc\n";
         displayText += "Use Item in Slot - 1-6\n";
+        displayText += "Toggle Flashlight - Spacebar\n";
+        displayText += "Toggle Maze Map - M\n";
+        displayText += "Toggle Forest Map - F\n";
+        displayText += "Toggle Laboratory Map - L\n";
+        displayText += "Clear All Maps - C\n";
         displayText += "Other Level Interactions - Mouse Click\n";
         displayText += "Hide/Unhide this Info Box - G\n";
+        displayText += "\n";
         displayText += "Good Luck\n";
     }
 

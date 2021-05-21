@@ -5,10 +5,10 @@ using Photon.Pun;
 
 public class MonsterInfo : MonoBehaviour
 {
-    private int boxWidth = 240;
-    private int boxHeight = 240;
+    public int boxWidth = 240;
+    public int boxHeight = 240;
 
-    private string displayText;
+    public string displayText;
     private bool GUIenabled;
 
     PhotonView PV;
