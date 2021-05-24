@@ -8,7 +8,7 @@ public class NearItemGlow : MonoBehaviourPunCallbacks, IPunObservable
 {
     //private Vector3 targetDirection;
 
-    Behaviour halo;
+     public Behaviour halo;
 
     PhotonView PV;
 

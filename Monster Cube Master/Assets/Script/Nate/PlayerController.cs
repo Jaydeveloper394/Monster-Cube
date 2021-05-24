@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
             stream.SendNext(trail.enabled);
 
+            //stream.SendNext(interactionObject.GetComponent<NearItemGlow>().halo.enabled);
+
         }
         else
         {
@@ -77,6 +79,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             this.flashlight.enabled = (bool)stream.ReceiveNext();
             TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
             trail.enabled = (bool)stream.ReceiveNext();
+
+            //this.interactionObject.GetComponent<NearItemGlow>().halo.enabled = (bool)stream.ReceiveNext();
 
         }
     }
@@ -353,7 +357,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             StatusDecrease status = interactionObject.GetComponent<StatusDecrease>();
             if(CheckPlayerParalyzed(status))
             {
+                Debug.Log("unfreezing" + interactionObject);
                 status.UnfreezePlayer();
+            }
+            else
+            {
+                Debug.Log("player not frozen");
             }
         }
         else if(interactionObject.tag == "Object")
