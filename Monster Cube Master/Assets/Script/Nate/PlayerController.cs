@@ -354,6 +354,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         else if(interactionObject.tag == "Player")
         {
             //put the player stuff in here!
+            //try calling directly onto interaction object
             StatusDecrease status = interactionObject.GetComponent<StatusDecrease>();
             Debug.Log(status.isparalyzed);
             if(status.isparalyzed)
