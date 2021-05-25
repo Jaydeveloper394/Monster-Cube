@@ -48,7 +48,7 @@ public class StatusDecrease : PlayerController
 
     void Update()
     { 
-       if(healthSlider.value <= 0)
+       if(healthSlider.value <= 0 && !isparalyzed)
        {
             FreezePlayer();
            
