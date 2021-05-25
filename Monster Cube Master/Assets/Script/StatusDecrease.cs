@@ -75,8 +75,9 @@ public class StatusDecrease : PlayerController
         healthSlider.value = healthSlider.maxValue;
         isparalyzed = false;
 
-        gameObject.GetComponent<CapsuleCollider>().enabled = false;
         gameObject.GetComponent<CharacterController>().enabled = true;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        
         
 
     }

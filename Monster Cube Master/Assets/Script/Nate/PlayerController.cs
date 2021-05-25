@@ -355,7 +355,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             //put the player stuff in here!
             StatusDecrease status = interactionObject.GetComponent<StatusDecrease>();
-            if(CheckPlayerParalyzed(status))
+            Debug.Log(status.isparalyzed);
+            if(status.isparalyzed)
             {
                 Debug.Log("unfreezing" + interactionObject);
                 status.UnfreezePlayer();
@@ -425,10 +426,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     /// <param name="player"></param>  The parameter need to be a gameobject
     /// <returns></returns>  eturn a bool = true, if the player  is down
 
-    public bool CheckPlayerParalyzed(StatusDecrease status)
+    /*public bool CheckPlayerParalyzed(StatusDecrease status)
     {
        return status.isparalyzed;
-    }
+    }*/
 
     /// <summary>
     ///     Return The player get the Key and Touch the door at the saame Time
