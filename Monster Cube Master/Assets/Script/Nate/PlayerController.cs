@@ -369,7 +369,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         else if(interactionObject.tag == "Object")
         {
-            //interactionObject.interact();
+            Debug.Log("Object interacted");
+            interactionObject.GetComponent<objectInteraction>().interact();
         }
 
     }

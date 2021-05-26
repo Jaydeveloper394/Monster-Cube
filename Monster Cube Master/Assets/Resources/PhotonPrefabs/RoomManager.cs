@@ -13,8 +13,8 @@ public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
     //makes sure they are automatically destroyed
     public static RoomManager Instance;
     
-    bool Monster_Win = false;
-    bool player_Win = false;
+    public bool Monster_Win = false;
+    public bool player_Win = false;
 
     public static float scenceIndex = -1;
 
@@ -27,7 +27,7 @@ public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
     //private bool reciv_playerStatus = false;
     //private bool all_playerStatus = false;
 
-    private bool GameOver = false;
+    public bool GameOver = false;
 
     #endregion
     [SerializeField]
@@ -104,7 +104,7 @@ public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
 
-        //Checkwin();
+        Checkwin();
     }
 
     private void FixedUpdate()
