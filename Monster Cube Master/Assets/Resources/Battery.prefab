@@ -75,9 +75,12 @@ GameObject:
   - component: {fileID: 2779510171289176739}
   - component: {fileID: -6171782669581532654}
   - component: {fileID: 942688181823565055}
+  - component: {fileID: 1905005134898317021}
+  - component: {fileID: -6295830415790389821}
+  - component: {fileID: 8469470239413423725}
   m_Layer: 0
   m_Name: Battery
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,10 +195,49 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -6295830415790389821}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!122 &1905005134898317021
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450339830578938201}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278973695
+  m_Size: 0.85
+--- !u!114 &-6295830415790389821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450339830578938201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halo: {fileID: 1905005134898317021}
+--- !u!135 &8469470239413423725
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450339830578938201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.125
+  m_Center: {x: 0.01, y: 0, z: 0}
 --- !u!1 &8912273965169426637
 GameObject:
   m_ObjectHideFlags: 0
