@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ad731a13fffc144be5c5f35c9b089d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poweredOn: 1
+  poweredOn: 0
   roomManager: {fileID: 2033453233}
 --- !u!65 &80186768
 BoxCollider:
@@ -475,6 +475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElevatorDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9bde637b984924660a09fefbc0d64a34,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bde637b984924660a09fefbc0d64a34, type: 3}
