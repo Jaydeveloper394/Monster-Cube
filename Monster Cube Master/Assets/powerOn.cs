@@ -9,6 +9,7 @@ public class powerOn : MonoBehaviour
     private bool activated = false;
 
     public GameObject elevator;
+    public GameObject elevatorDoor;
     
     // Update is called once per frame
     void Update()
@@ -25,5 +26,6 @@ public class powerOn : MonoBehaviour
     public void powerAll()
     {
         elevator.GetComponent<playerEscape>().poweredOn = true;
+        elevatorDoor.GetComponent<Animation>().Play();
     }
 }
