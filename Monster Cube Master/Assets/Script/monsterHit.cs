@@ -33,7 +33,10 @@ public class monsterHit : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        victimHalo.enabled = false;
+        if (other.gameObject.tag == "Player")
+        {
+            victimHalo.enabled = false;
+        }
     }
 
 }
