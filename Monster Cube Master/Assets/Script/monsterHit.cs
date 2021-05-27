@@ -21,7 +21,7 @@ public class monsterHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.tag == "Player")
         {
             victimHalo = (Behaviour)other.GetComponent("Halo");
             victimHalo.enabled = true;
