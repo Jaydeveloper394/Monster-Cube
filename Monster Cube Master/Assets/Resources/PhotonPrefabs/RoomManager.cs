@@ -109,7 +109,7 @@ public class RoomManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void FixedUpdate()
     {
-        CheckTime();
+        //CheckTime();
     }
 /**
    //Using  Local variable to justice, so didn't use the PUN function to decide
