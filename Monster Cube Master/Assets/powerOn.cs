@@ -27,5 +27,6 @@ public class powerOn : MonoBehaviour
     {
         elevator.GetComponent<playerEscape>().poweredOn = true;
         elevatorDoor.GetComponent<Animation>().Play();
+        activated = true;
     }
 }
