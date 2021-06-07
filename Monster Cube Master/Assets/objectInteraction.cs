@@ -13,18 +13,23 @@ public class objectInteraction : MonoBehaviour
     public GameObject prevCondition = null;
     public bool prevMet = false;
 
+    PhotonView pv;
+
+    private void Start()
+    {
+        pv = PhotonView.Get(this);
+    }
+
     public void interact()
     {
         if(prevCondition != null)
         {
-            prevMet = prevCondition.GetComponent<objectInteraction>().activated;
+            pv.RPC("reqCheck", RpcTarget.AllBuffered);
         }
 
         //not active for none repeatable, dont care for repeatables
         if(itemType != null && !activated|| activated && repeatable && itemType != null)
         {
-            PhotonView pv = PhotonView.Get(this);
-
             if(itemType == "NLever")
             {
                 pv.RPC("pullNormalLever", RpcTarget.AllBuffered);
@@ -99,4 +104,9 @@ public class objectInteraction : MonoBehaviour
         }
     }
 
+    [PunRPC]
+    public void reqCheck()
+    {
+        prevMet = prevCondition.GetComponent<objectInteraction>().activated;
+    }
 }
