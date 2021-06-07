@@ -14,7 +14,9 @@ public class PlayerManager2 : MonoBehaviour
     Vector3 spawnPoint; //create a list of spawn points later
     public GameObject playerPrefab;
 
-    public Transform[] playerTransformPosition;
+    public GameObject[] playerTransformPosition;
+
+    private int num = 0;
 
     // GameObject monsterPrefab;
 
@@ -74,10 +76,25 @@ public class PlayerManager2 : MonoBehaviour
             Vector3 spawn_pos = playerTransformPosition[num].position;
 
             string playerTag = "Player" + num;*/
-            // num++;
-
             GameObject spawner = GameObject.FindGameObjectWithTag("PlayerSpawn2");
             Vector3 spawn_pos = spawner.transform.position;
+            // num++;
+            if (num == 0)
+            {
+                spawner = GameObject.FindGameObjectWithTag("PlayerSpawn1");
+                spawn_pos = spawner.transform.position;
+            }
+            if (num == 2)
+            {
+                spawner = GameObject.FindGameObjectWithTag("PlayerSpawn3");
+                spawn_pos = spawner.transform.position;
+            }
+            if (num == 3)
+            {
+                spawner = GameObject.FindGameObjectWithTag("PlayerSpawn4");
+                spawn_pos = spawner.transform.position;
+            }
+
 
             Debug.Log("Instantiated Player Controller");
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity);
