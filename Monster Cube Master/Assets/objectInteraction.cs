@@ -10,13 +10,18 @@ public class objectInteraction : MonoBehaviour
     public bool repeatable = false;
     public bool activated = false;
 
+    public GameObject prevCondition = null;
+    public bool prevMet = false;
 
-    public int leversLeft = 3;
-    public GameObject console;
     public void interact()
     {
+        if(prevCondition != null)
+        {
+            prevMet = prevCondition.GetComponent<objectInteraction>().activated;
+        }
+
         //not active for none repeatable, dont care for repeatables
-        if(itemType != null && !activated || activated && repeatable && itemType != null)
+        if(itemType != null && !activated|| activated && repeatable && itemType != null)
         {
             PhotonView pv = PhotonView.Get(this);
 
@@ -28,20 +33,30 @@ public class objectInteraction : MonoBehaviour
             {
                 pv.RPC("pullConsoleLever", RpcTarget.AllBuffered);
             }
+            else if(itemType == "genLock")
+            {
+                pv.RPC("genUnlock", RpcTarget.AllBuffered);
+            }
+            else if(itemType == "conLock")
+            {
+                pv.RPC("conUnlock", RpcTarget.AllBuffered);
+            }
+            else if(itemType == "conButton")
+            {
+                pv.RPC("conPress", RpcTarget.AllBuffered);
+            }
         }
     }
 
     [PunRPC]
     public void pullNormalLever()
     {
-        if(animatedObject.GetComponent<Animation>() != null)
+        if(prevMet)
         {
             animatedObject.GetComponent<Animation>().Play();
-        }
 
-        //remove one from console reference.
-        console.GetComponent<objectInteraction>().leversLeft -= 1;
-        activated = true;
+            activated = true;
+        }
     }
 
     [PunRPC]
@@ -49,17 +64,39 @@ public class objectInteraction : MonoBehaviour
     {
         Animation ani = animatedObject.GetComponent<Animation>();
 
-        //if there are still levers left, play stuck animation
-        if(leversLeft > 0)
-        {
-            ani.Play("Stuck");
-        }
-        else
-        {
-            ani.Play("On");
-            activated = true;
-            gameObject.GetComponent<powerOn>().poweredOn = true;
-        }
+        ani.Play("On");
+        activated = true;
+        gameObject.GetComponent<powerOn>().poweredOn = true;
 
     }
+
+    [PunRPC]
+    public void genUnlock()
+    {
+        //open door
+        animatedObject.GetComponent<Animation>().Play();
+        activated = true;
+    }
+
+    [PunRPC]
+    public void conUnlock()
+    {
+        if (prevMet)
+        {
+            //open door
+            animatedObject.GetComponent<Animation>().Play();
+            activated = true;
+        }
+    }
+
+    [PunRPC]
+    public void conPress()
+    {
+        if (prevMet)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            activated = true;
+        }
+    }
+
 }

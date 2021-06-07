@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2444050201085435088}
   - component: {fileID: 8273925635647000169}
   - component: {fileID: 3691706089924740170}
-  - component: {fileID: 8950713173356577884}
   - component: {fileID: 4546726786714307153}
   m_Layer: 0
   m_Name: powerConsoleP
@@ -85,24 +84,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8950713173356577884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5212273039450526110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54137a55dd174e54390bbfae8441483b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: Console
-  animatedObject: {fileID: 6566922085371487875}
-  repeatable: 0
-  activated: 0
-  leversLeft: 3
-  console: {fileID: 5212273039450526110}
 --- !u!114 &4546726786714307153
 MonoBehaviour:
   m_ObjectHideFlags: 0
