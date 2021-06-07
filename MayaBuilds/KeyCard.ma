@@ -1,6 +1,6 @@
 //Maya ASCII 2019 scene
 //Name: KeyCard.ma
-//Last modified: Mon, Jun 07, 2021 12:55:54 PM
+//Last modified: Mon, Jun 07, 2021 03:57:17 PM
 //Codeset: UTF-8
 requires maya "2019";
 requires "mtoa" "3.1.2";
@@ -14,13 +14,13 @@ fileInfo "osv" "Mac OS X 10.16";
 createNode transform -s -n "persp";
 	rename -uid "124F83D7-B445-4F20-9793-48806F7006CC";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0.049108980633493005 7.277291562994133 -0.17571372483724268 ;
-	setAttr ".r" -type "double3" 270.86164727024624 -160.99999999999892 0 ;
+	setAttr ".t" -type "double3" 0.029542065830670164 11.644228654984587 -4.7225722718848147 ;
+	setAttr ".r" -type "double3" 294.26164727022899 -179.39999999998744 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "E444B439-2E4E-C595-76D8-13A375DED5D2";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999986;
-	setAttr ".coi" 5.9088782998547531;
+	setAttr ".coi" 11.270581532212336;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
