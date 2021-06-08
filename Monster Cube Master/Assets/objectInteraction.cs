@@ -12,40 +12,41 @@ public class objectInteraction : MonoBehaviour
 
     public GameObject prevCondition = null;
     public bool prevMet = false;
+
     PhotonView pv;
 
     private void Start()
     {
-        PhotonView.Get(this);
+        pv = PhotonView.Get(this);
     }
 
     public void interact()
     {
-        if (prevCondition != null)
+        if(prevCondition != null)
         {
-            pv.RPC("checkPreReq", RpcTarget.AllBuffered);
+            pv.RPC("reqCheck", RpcTarget.AllBuffered);
         }
 
         //not active for none repeatable, dont care for repeatables
-        if (itemType != null && !activated || activated && repeatable && itemType != null)
+        if(itemType != null && !activated|| activated && repeatable && itemType != null)
         {
-            if (itemType == "NLever")
+            if(itemType == "NLever")
             {
                 pv.RPC("pullNormalLever", RpcTarget.AllBuffered);
             }
-            else if (itemType == "Console")
+            else if(itemType == "Console")
             {
                 pv.RPC("pullConsoleLever", RpcTarget.AllBuffered);
             }
-            else if (itemType == "genLock")
+            else if(itemType == "genLock")
             {
                 pv.RPC("genUnlock", RpcTarget.AllBuffered);
             }
-            else if (itemType == "conLock")
+            else if(itemType == "conLock")
             {
                 pv.RPC("conUnlock", RpcTarget.AllBuffered);
             }
-            else if (itemType == "conButton")
+            else if(itemType == "conButton")
             {
                 pv.RPC("conPress", RpcTarget.AllBuffered);
             }
@@ -55,9 +56,10 @@ public class objectInteraction : MonoBehaviour
     [PunRPC]
     public void pullNormalLever()
     {
-        if (prevMet)
+        if(prevMet)
         {
             animatedObject.GetComponent<Animation>().Play();
+
             activated = true;
         }
     }
@@ -103,7 +105,7 @@ public class objectInteraction : MonoBehaviour
     }
 
     [PunRPC]
-    public void checkPreReq()
+    public void reqCheck()
     {
         prevMet = prevCondition.GetComponent<objectInteraction>().activated;
     }
