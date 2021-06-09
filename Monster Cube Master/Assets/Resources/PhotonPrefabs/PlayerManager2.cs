@@ -97,7 +97,7 @@ public class PlayerManager2 : MonoBehaviour
 
 
             Debug.Log("Instantiated Player Controller");
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerTest"), spawn_pos, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player_Model Test"), spawn_pos, Quaternion.identity);
             //gb.transform.tag = playerTag;
 
 
