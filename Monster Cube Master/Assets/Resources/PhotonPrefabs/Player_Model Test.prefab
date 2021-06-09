@@ -969,21 +969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityOfMouse: 0
   Player: {fileID: 7278563200528100270}
---- !u!114 &46697165240257918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519747329392278982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3522acf09212706438cf6315d82996bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  startTime: 999
-  timerText: {fileID: 4958967302479524750}
 --- !u!143 &3496007987273579629
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1012,7 +997,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.012
+  m_Radius: 1.25
   m_Height: 0.01
   m_Direction: 1
   m_Center: {x: 0, y: 0.015, z: 0}
@@ -1234,6 +1219,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &46697165240257918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519747329392278982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522acf09212706438cf6315d82996bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  startTime: 999
+  timerText: {fileID: 4958967302479524750}
 --- !u!1 &8754733771563372939
 GameObject:
   m_ObjectHideFlags: 0
