@@ -1401,6 +1401,11 @@ PrefabInstance:
       objectReference: {fileID: 7400000, guid: 928327adb0fd340d097da5f28e3a3fe8, type: 2}
     - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
         type: 3}
+      propertyPath: m_CullingType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
       propertyPath: m_AnimatePhysics
       value: 0
       objectReference: {fileID: 0}
@@ -1418,7 +1423,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Animations.Array.data[0]
       value: 
-      objectReference: {fileID: 7400000, guid: 59036787111e04a1ab6778b708f641d3, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
         type: 3}
       propertyPath: m_Animations.Array.data[1]

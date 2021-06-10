@@ -385,17 +385,20 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Credits:
 
-    Anna Salieva - Producer
+    Anna Salieva - Producer, Programmer
 
-    Jake Yamashita - Programmer
+    Jake Yamashita
+    - 3D Artist, Programmer
 
-    Jaydev
-    Patel - Inventory/UI Effects
+    Jaydev Patel - UI Effects, Programmer
 
-    Shuai Wang - Programmer
+    Tyler
+    Pasela - 3D Level Design & Animation
 
-    Tyler Pasela -
-    3D Modeling & Level Design'
+    Carlos Gomez - 3D Artist, Programmer
+
+    Shuai
+    Wang - Prototype Programmer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
