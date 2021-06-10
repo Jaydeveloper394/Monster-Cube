@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 6354923435702480731}
   - component: {fileID: 8143025486725436556}
   - component: {fileID: 869641867004351301}
+  - component: {fileID: 8880620554902060227}
   m_Layer: 0
   m_Name: KeyCard
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +105,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8880620554902060227}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -160,3 +162,16 @@ Halo:
     serializedVersion: 2
     rgba: 4284278614
   m_Size: 5
+--- !u!114 &8880620554902060227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887848912081085567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a029793ad43c2ce48a94158d63a8a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halo: {fileID: 869641867004351301}
