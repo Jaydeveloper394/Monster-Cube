@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     //mark Player has key or not
     //public bool haskey =false;
-     bool PlayerHasKey;
-    bool PlayerHasCard;
+    public bool PlayerHasKey;
+    public bool PlayerHasCard;
     public static bool PlayerHasKey_All;
     public bool PlayerWin;
 
@@ -398,7 +398,20 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         else if(interactionObject.tag == "Object")
         {
             Debug.Log("Object interacted");
-            interactionObject.GetComponent<objectInteraction>().interact();
+            string itemOType = interactionObject.GetComponent<objectInteraction>().itemType;
+
+            if(itemOType == "genLock" && !PlayerHasKey || itemOType == "conLock" && !PlayerHasCard)
+            {
+                //do nothing
+            }
+            else if(itemOType == "genLock" && PlayerHasKey || itemOType == "conLock" && PlayerHasCard)
+            {
+                interactionObject.GetComponent<objectInteraction>().interact();
+            }
+            else
+            {
+                interactionObject.GetComponent<objectInteraction>().interact();
+            }
         }
 
     }
