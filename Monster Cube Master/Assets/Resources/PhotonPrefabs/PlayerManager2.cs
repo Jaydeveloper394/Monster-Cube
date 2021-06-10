@@ -78,7 +78,7 @@ public class PlayerManager2 : MonoBehaviour
             string playerTag = "Player" + num;*/
             GameObject spawner = GameObject.FindGameObjectWithTag("PlayerSpawn2");
             Vector3 spawn_pos = spawner.transform.position;
-            // num++;
+            num++;
             if (num == 0)
             {
                 spawner = GameObject.FindGameObjectWithTag("PlayerSpawn1");

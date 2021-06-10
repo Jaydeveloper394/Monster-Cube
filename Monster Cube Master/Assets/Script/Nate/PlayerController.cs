@@ -320,16 +320,29 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (other.gameObject.tag == "Object" || other.gameObject.tag == "Item" || other.gameObject.tag == "Player")
             {
+                    if (gameObject.GetComponent<StatusDecrease>().isparalyzed)
+                    {
+                        Debug.Log("Start Unparalyze");
+                        gameObject.GetComponent<StatusDecrease>().healthSlider.value = gameObject.GetComponent<StatusDecrease>().healthSlider.maxValue;
+                        gameObject.GetComponent<StatusDecrease>().isparalyzed = false;
+                        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+                        gameObject.GetComponent<CharacterController>().enabled = true;
+                        Debug.Log("End Unparalyze");
+                    }
+                    else
+                    {
 
-                Debug.Log("name: " + other.name);
-                if (interactionObject != null)
-                {
-                    interactionObject.GetComponent<NearItemGlow>().DisableHalo();
-                }
-                interactionObject = other.gameObject;
-                interactionObject.GetComponent<NearItemGlow>().EnableHalo();
 
-                Debug.Log("interactin name: " + interactionObject.name);
+                        Debug.Log("name: " + other.name);
+                        if (interactionObject != null)
+                        {
+                            interactionObject.GetComponent<NearItemGlow>().DisableHalo();
+                        }
+                        interactionObject = other.gameObject;
+                        interactionObject.GetComponent<NearItemGlow>().EnableHalo();
+
+                        Debug.Log("interactin name: " + interactionObject.name);
+                    }
 
             }
         }
