@@ -19,6 +19,7 @@ TagManager:
   - Bullet
   - RoomManager
   - Object
+  - KeyCardSpawn
   layers:
   - Default
   - TransparentFX
