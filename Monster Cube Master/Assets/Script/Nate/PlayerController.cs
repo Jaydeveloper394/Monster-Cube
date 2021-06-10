@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     //mark Player has key or not
     //public bool haskey =false;
      bool PlayerHasKey;
+    bool PlayerHasCard;
     public static bool PlayerHasKey_All;
     public bool PlayerWin;
 
@@ -351,6 +352,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
                 if (photonView.IsMine)
                 {
                     inventory.AddItem(item);
+
+                    if(item.Name == "key")
+                    {
+                        PlayerHasKey = true;
+                    }
+                    else if(item.Name == "KeyCard")
+                    {
+                        PlayerHasCard = true;
+                    }
+
                     Debug.Log("Item added!");
                 }
             }
