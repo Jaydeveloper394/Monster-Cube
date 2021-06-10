@@ -263,6 +263,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         //make sure different frame got same speed;
         if (this.gameObject.GetComponent<StatusDecrease>().isparalyzed == false)
         {
+            Animation walk = this.gameObject.GetComponent<Animation>();
+            if (walk!=null){
+                walk.Play();
+            }
             mycontroller.Move(movedirection * Time.deltaTime);
         }
 

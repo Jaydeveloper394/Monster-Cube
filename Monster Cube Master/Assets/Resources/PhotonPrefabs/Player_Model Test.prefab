@@ -969,6 +969,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityOfMouse: 0
   Player: {fileID: 7278563200528100270}
+--- !u!114 &46697165240257918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519747329392278982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522acf09212706438cf6315d82996bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  startTime: 999
+  timerText: {fileID: 4958967302479524750}
 --- !u!143 &3496007987273579629
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1219,21 +1234,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &46697165240257918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519747329392278982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3522acf09212706438cf6315d82996bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  startTime: 999
-  timerText: {fileID: 4958967302479524750}
 --- !u!1 &8754733771563372939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1395,36 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 928327adb0fd340d097da5f28e3a3fe8, type: 2}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 59036787111e04a1ab6778b708f641d3, type: 2}
+    - target: {fileID: 2223639932434330405, guid: 9606e1ba3816b4b0eb173c856deeee0a,
+        type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 928327adb0fd340d097da5f28e3a3fe8, type: 2}
     - target: {fileID: 4167280743394806330, guid: 9606e1ba3816b4b0eb173c856deeee0a,
         type: 3}
       propertyPath: m_LocalScale.x
