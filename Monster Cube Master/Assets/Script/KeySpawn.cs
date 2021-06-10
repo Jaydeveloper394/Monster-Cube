@@ -6,16 +6,18 @@ using UnityEngine;
 public class KeySpawn : MonoBehaviour
 {
     public GameObject[] keyLocations;
+    public GameObject[] keyCardLocations;
     public GameObject key;
+    public GameObject keyCard;
+
+    private int kspawn;
+    private int kcspawn;
 
     private bool[] keys;
     void Start()
     {
         keyLocations = GameObject.FindGameObjectsWithTag("KeySpawn");
-        keys = new bool[keyLocations.Length];
-        for (int i = 0; i<keyLocations.Length; i++){
-            keys[i] = false;
-        }
+        keyCardLocations = GameObject.FindGameObjectsWithTag("KeyCardSpawn");
         spawnKey();
     }
 
@@ -27,20 +29,10 @@ public class KeySpawn : MonoBehaviour
 
     private void spawnKey()
     {
-        int count = 0;
-        while(true){
-            if (count == 3){
-                break;
-            }
-            int spawn = Random.Range(0, keyLocations.Length);
-            if (keys[spawn]){
-                continue;
-            }
-            else{
-                GameObject newKey = PhotonNetwork.Instantiate("waterPrefab", keyLocations[spawn].transform.position, Quaternion.identity);
-                keys[spawn] = true;
-                count +=1;
-            }
-        }
+        kspawn = Random.Range(0, keyLocations.Length);
+        kcspawn = Random.Range(0, keyCardLocations.Length);
+
+        GameObject newKey = PhotonNetwork.Instantiate("key", keyLocations[kspawn].transform.position, Quaternion.identity);
+        GameObject newKeyCard = PhotonNetwork.Instantiate("KeyCard", keyLocations[kcspawn].transform.position, Quaternion.identity);
     }
 }
