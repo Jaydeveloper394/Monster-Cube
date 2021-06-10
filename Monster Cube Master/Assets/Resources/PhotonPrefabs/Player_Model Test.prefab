@@ -1116,7 +1116,7 @@ MonoBehaviour:
   - {fileID: 1469224392569047315}
   - {fileID: 5800257815616068583}
   - {fileID: 9096626059635663940}
-  viewIdField: 6
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &8026581861928283196
