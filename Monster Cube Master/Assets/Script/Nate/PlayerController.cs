@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
 
         }
-        if (flashlightdied == false && batterylife.value <= 10 && batterylife.value >= 1)
+        if (flashlightdied == false && batterylife.value <= 5 && batterylife.value >= 1)
         {
             //Debug.Log("Battery Low");
             StartCoroutine(FlickerLight());
