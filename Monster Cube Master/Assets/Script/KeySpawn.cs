@@ -31,8 +31,10 @@ public class KeySpawn : MonoBehaviour
     {
         kspawn = Random.Range(0, keyLocations.Length);
         kcspawn = Random.Range(0, keyCardLocations.Length);
+        if (PhotonNetwork.IsMasterClient){
+            GameObject newKey = PhotonNetwork.Instantiate("key", keyLocations[kspawn].transform.position, Quaternion.identity);
+            GameObject newKeyCard = PhotonNetwork.Instantiate("KeyCard", keyCardLocations[kcspawn].transform.position, Quaternion.identity);
+        }
 
-        GameObject newKey = PhotonNetwork.Instantiate("key", keyLocations[kspawn].transform.position, Quaternion.identity);
-        GameObject newKeyCard = PhotonNetwork.Instantiate("KeyCard", keyCardLocations[kcspawn].transform.position, Quaternion.identity);
     }
 }
